@@ -1,25 +1,118 @@
-import logo from './logo.svg';
-import './App.css';
+import "./index.css";
+import { useState, useEffect } from "react";
+import Searchbar from "./components/Searchbar";
+import Pagination from "./components/Pagination";
+import Modal from "./components/Modal";
+import Menu from "./components/Menu";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+// let myCounter = 0
+export default function Characters() {
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [filter, setFilter] = useState([])
+  const [disabled, setDisabled] = useState(false)
+  const [myCounter, setMyCounter] = useState(0)
+  
+  
+  
+let result = []
+function handleChange(event) {
+    let myValue = event.target.value
+    result = data.filter((element) => {
+      return element.title.includes(myValue)
+    })
+  setFilter(result)
 }
+  
 
-export default App;
+const onPrev = (event) => {
+  let prevPage = data.info.prev
+  if (myCounter > 0  ) {
+    myUrl = prevPage
+    getData(myUrl)
+    setMyCounter(myCounter-1)
+    console.log(myCounter);
+  } else {
+    setDisabled(false)
+  }
+}
+  
+  const onNext = (event) => {
+  let nextPage = data.info.next
+  myUrl = nextPage
+  getData(myUrl)
+  setDisabled(true)
+  setMyCounter(myCounter+1)
+  console.log(myCounter);
+}
+  
+  useEffect(() => {
+    console.log("mz counter", myCounter);
+    if (myCounter === 0) {
+      setDisabled(false)
+    }
+  }, [myCounter])
+  
+let myUrl = "https://fakestoreapi.com/products"
+  
+const getData = async (url) => {
+  try {
+    const response = await fetch(myUrl);
+    if (!response.ok) {
+      throw new Error(
+        `This is an HTTP error: The status is ${response.status}`
+      );
+    }
+    let actualData = await response.json();
+    const myData = actualData
+    setData(actualData)
+    setFilter(myData)
+    setError(null);
+    } catch (err) {
+      setError(err.message);
+    setData(null);
+    } finally {
+      setLoading(false);
+    }
+}
+  
+useEffect(() => {
+  getData()
+//eslint-disable-next-line
+}, [])
+
+  return (
+  
+    <div className="App">
+      <Menu handleChange={handleChange} />
+      <Searchbar handleChange={handleChange} />
+      <div className="Content">
+        {loading && <div>A moment please...</div>}
+
+        {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
+
+        {filter && filter.map(({ id, title, image, price, description }) => (
+            <div key={id}>
+            <Modal id={id} title={title} image={image} description={description} price={price} />
+              <div className="flip-card" key={id}>
+                <div className="flip-card-inner">
+                  <div className="flip-card-front">
+                    <img src={image} alt={title}></img>
+                </div>
+                  <div className="flip-card-back">
+                    <h3>{title}</h3>
+                  </div>
+                </div>
+                </div>
+              </div>
+          ))}
+      </div>
+      <Pagination
+        onNext={onNext}
+        onPrev={onPrev} 
+        disabled={disabled} />
+    </div>
+);
+}
