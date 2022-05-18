@@ -1,8 +1,9 @@
 import "./index.css";
 import { useState, useEffect } from "react";
-import Searchbar from "./components/Searchbar";
+import { Row, Col, Card } from "react-bootstrap";
 import Pagination from "./components/Pagination";
-import Modal from "./components/Modal";
+import Searchbar from "./components/Searchbar";
+// import Modal from "./components/Modal";
 import Menu from "./components/Menu";
 
 
@@ -92,22 +93,24 @@ useEffect(() => {
         {loading && <div>A moment please...</div>}
 
         {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
+        <Row className="g-4">
+          {filter && filter.map(({ id, title, price, description, category, image }) => (
 
-        {filter && filter.map(({ id, title, image, price, description }) => (
-            <div key={id}>
-            <Modal id={id} title={title} image={image} description={description} price={price} />
-              <div className="flip-card" key={id}>
-                <div className="flip-card-inner">
-                  <div className="flip-card-front">
-                    <img src={image} alt={title}></img>
-                </div>
-                  <div className="flip-card-back">
-                    <h3>{title}</h3>
-                  </div>
-                </div>
-                </div>
-              </div>
+            
+            <Col key={id}>
+              <Card key={id} style={{ width: '18rem' }}>
+              <Card.Body className="p-0">
+                <Card.Text className="text-truncate category"><h5>{category}</h5></Card.Text>
+                <Card.Img variant="top" src={image} alt={title} style={{ height: '250px' }}/>
+                <Card.Title>{title}</Card.Title>
+                <Card.Text className="text-truncate description">{description}</Card.Text>
+                <Card.Text className="text-truncate price">{price}€</Card.Text>
+                <Card.Text className="text-truncate small-text">inkl. MwSt, zzgl. Versand</Card.Text>
+              </Card.Body>
+              </Card>
+            </Col>
           ))}
+        </Row>
       </div>
       <Pagination
         onNext={onNext}
@@ -116,3 +119,5 @@ useEffect(() => {
     </div>
 );
 }
+
+
