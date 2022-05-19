@@ -1,15 +1,15 @@
 import React from 'react'
 import { useState, useEffect } from "react";
 import { Row, Col, Card, Badge } from "react-bootstrap";
-import Menu from './components/Menu'
-import Searchbar from './components/Searchbar'
-import ImageCarousel from './components/ImageCarousel'
-import Pagination from './components/Pagination' 
+import Menu from '../components/Menu'
+import Searchbar from '../components/Searchbar'
+// import ImageCarousel from '../components/ImageCarousel'
+import Pagination from '../components/Pagination' 
 
 
 
 // let myCounter = 0
-function App() {
+function ViewShop() {
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -56,7 +56,7 @@ if (myCounter === 0) {
 }
 }, [myCounter])
 
-let myUrl = "https://fakestoreapi.com/products?limit=4"
+let myUrl = "https://fakestoreapi.com/products"
 
 const getData = async () => {
 try {
@@ -90,7 +90,6 @@ return (
         
     <Menu handleChange={handleChange} />
     <Searchbar handleChange={handleChange} />
-    <ImageCarousel />
 
     <div className="Content">
     {loading && <div>A moment please...</div>}
@@ -129,4 +128,4 @@ return (
 );
 }
 
-export default App
+export default ViewShop
