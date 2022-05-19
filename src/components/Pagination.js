@@ -1,6 +1,5 @@
 import React from "react";
 // import { Button, ButtonGroup } from "react-bootstrap";
-import "../index.css";
 
 function Pagination(props) {
 const onPrev = props.onPrev
