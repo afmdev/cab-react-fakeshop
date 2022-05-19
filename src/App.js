@@ -1,10 +1,11 @@
 import "./index.css";
 import { useState, useEffect } from "react";
-import { Row, Col, Card } from "react-bootstrap";
+import { Row, Col, Card, Badge } from "react-bootstrap";
 import Pagination from "./components/Pagination";
 import Searchbar from "./components/Searchbar";
 // import Modal from "./components/Modal";
 import Menu from "./components/Menu";
+import ImageCarousel from "./components/ImageCarousel";
 
 
 // let myCounter = 0
@@ -89,6 +90,8 @@ useEffect(() => {
     <div className="App">
       <Menu handleChange={handleChange} />
       <Searchbar handleChange={handleChange} />
+      <ImageCarousel />
+
       <div className="Content">
         {loading && <div>A moment please...</div>}
 
@@ -98,15 +101,20 @@ useEffect(() => {
 
             
             <Col key={id}>
-              <Card key={id} style={{ width: '18rem' }}>
-              <Card.Body className="p-0">
-                <Card.Text className="text-truncate category"><h5>{category}</h5></Card.Text>
-                <Card.Img variant="top" src={image} alt={title} style={{ height: '250px' }}/>
-                <Card.Title>{title}</Card.Title>
-                <Card.Text className="text-truncate description">{description}</Card.Text>
-                <Card.Text className="text-truncate price">{price}€</Card.Text>
-                <Card.Text className="text-truncate small-text">inkl. MwSt, zzgl. Versand</Card.Text>
-              </Card.Body>
+              <Card key={id} className="h-100" style={{ width: '18rem' }}>
+                
+                <Card.Header>
+                  <Badge pill bg="dark">{category}</Badge>
+                  </Card.Header>
+
+                  <Card.Body className="p-0">
+                  <Card.Img variant="top" src={image} alt={title} style={{ height: '250px' }} />
+                  <Card.Title>{title}</Card.Title>
+                  <Card.Text className="text-truncate description">{description}</Card.Text>
+                  <Card.Text className="text-truncate price">{price}€</Card.Text>
+                  <Card.Text className="text-truncate small-text">inkl. MwSt, zzgl. Versand</Card.Text>
+                </Card.Body>
+                
               </Card>
             </Col>
           ))}
@@ -116,6 +124,7 @@ useEffect(() => {
         onNext={onNext}
         onPrev={onPrev} 
         disabled={disabled} />
+      
     </div>
 );
 }
