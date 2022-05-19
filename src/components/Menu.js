@@ -6,8 +6,8 @@ function Menu(props) {
 
     return (
 <Navbar bg="light" expand="lg">
-  <Container fluid>
-    <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+  <Container>
+    <Navbar.Brand href="#">afm:SHOP</Navbar.Brand>
     <Navbar.Toggle aria-controls="navbarScroll" />
     <Navbar.Collapse id="navbarScroll">
         <Nav
