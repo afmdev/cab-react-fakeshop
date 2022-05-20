@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import { Row, Col, Card, Badge } from "react-bootstrap";
 import Menu from '../components/Menu'
 import Searchbar from '../components/Searchbar'
-// import ImageCarousel from '../components/ImageCarousel'
+import ImageCarousel from '../components/ImageCarousel'
 import Pagination from '../components/Pagination' 
+import ProductButton from '../components/ProductButton' 
 
 
 
@@ -56,7 +57,9 @@ if (myCounter === 0) {
 }
 }, [myCounter])
 
-let myUrl = "https://fakestoreapi.com/products"
+// let myUrl = "https://fakestoreapi.com/products?limit=4"
+let myUrl = "../json/products.json"
+// let myUrl = "./json/five-products.json"
 
 const getData = async () => {
 try {
@@ -86,16 +89,17 @@ getData()
 
 return (
 
-    <div className="App">
+    <div className="ViewShop">
         
     <Menu handleChange={handleChange} />
     <Searchbar handleChange={handleChange} />
+    <ImageCarousel />
 
     <div className="Content">
     {loading && <div>A moment please...</div>}
 
     {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
-    <Row className="g-4">
+    <Row className="g-3">
         {filter && filter.map(({ id, title, price, description, category, image }) => (
 
         
@@ -112,6 +116,7 @@ return (
                 <Card.Text className="text-truncate description">{description}</Card.Text>
                 <Card.Text className="text-truncate price">{price}€</Card.Text>
                 <Card.Text className="text-truncate small-text">inkl. MwSt, zzgl. Versand</Card.Text>
+                <ProductButton  />
             </Card.Body>
             
             </Card>

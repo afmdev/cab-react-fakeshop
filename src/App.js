@@ -2,9 +2,10 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import { Row, Col, Card, Badge } from "react-bootstrap";
 import Menu from './components/Menu'
-import Searchbar from './components/Searchbar'
+// import Searchbar from './components/Searchbar'
 import ImageCarousel from './components/ImageCarousel'
-import Pagination from './components/Pagination' 
+// import Pagination from './components/Pagination' 
+import ProductButton from './components/ProductButton' 
 
 
 
@@ -14,8 +15,8 @@ function App() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const [filter, setFilter] = useState([])
-    const [disabled, setDisabled] = useState(false)
-    const [myCounter, setMyCounter] = useState(0)
+    // const [disabled, setDisabled] = useState(false)
+    // const [myCounter, setMyCounter] = useState(0)
 
 
 
@@ -23,40 +24,42 @@ function App() {
     function handleChange(event) {
         let myValue = event.target.value
         result = data.filter((element) => {
-            return element.title.includes(myValue)
+            return element.title.toLowerCase().includes(myValue)
         })
         setFilter(result)
     }
 
 
-    const onPrev = (event) => {
-        let prevPage = data.info.prev
-        if (myCounter > 0  ) {
-            myUrl = prevPage
-            getData(myUrl)
-            setMyCounter(myCounter-1)
-            console.log(myCounter);
-        } else {
-            setDisabled(false)
-        }
-    }
+//     const onPrev = (event) => {
+//         let prevPage = data.info.prev
+//         if (myCounter > 0  ) {
+//             myUrl = prevPage
+//             getData(myUrl)
+//             setMyCounter(myCounter-1)
+//             console.log(myCounter);
+//         } else {
+//             setDisabled(false)
+//         }
+//     }
 
-    const onNext = (event) => {
-        let nextPage = data.info.next
-        myUrl = nextPage
-        getData(myUrl)
-        setDisabled(true)
-        setMyCounter(myCounter+1)
-        console.log(myCounter);
-    }
+//     const onNext = (event) => {
+//         let nextPage = data.info.next
+//         myUrl = nextPage
+//         getData(myUrl)
+//         setDisabled(true)
+//         setMyCounter(myCounter+1)
+//         console.log(myCounter);
+//     }
 
-useEffect(() => {
-if (myCounter === 0) {
-    setDisabled(false)
-}
-}, [myCounter])
+// useEffect(() => {
+// if (myCounter === 0) {
+//     setDisabled(false)
+// }
+// }, [myCounter])
 
-let myUrl = "https://fakestoreapi.com/products?limit=4"
+// let myUrl = "https://fakestoreapi.com/products?limit=4"
+// let myUrl = "./json/products.json"
+let myUrl = "./json/five-products.json"
 
 const getData = async () => {
 try {
@@ -89,41 +92,36 @@ return (
     <div className="App">
         
     <Menu handleChange={handleChange} />
-    <Searchbar handleChange={handleChange} />
     <ImageCarousel />
 
     <div className="Content">
     {loading && <div>A moment please...</div>}
 
     {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
-    <Row className="g-4">
-        {filter && filter.map(({ id, title, price, description, category, image }) => (
+        <Row className="g-4">
+            {filter && filter.map(({ id, title, price, description, category, image }) => (
 
-        
-        <Col key={id}>
-            <Card key={id} className="h-100" style={{ width: '18rem' }}>
             
-            <Card.Header>
-                <Badge pill bg="dark">{category}</Badge>
-                </Card.Header>
+            <Col key={id}>
+                <Card key={id} className="h-100" style={{ width: '18rem' }}>
+                
+                <Card.Header>
+                    <Badge pill bg="dark">{category}</Badge>
+                    </Card.Header>
 
-                <Card.Body className="p-0">
-                <Card.Img variant="top" src={image} alt={title} style={{ height: '250px' }} />
-                <Card.Title>{title}</Card.Title>
-                <Card.Text className="text-truncate description">{description}</Card.Text>
-                <Card.Text className="text-truncate price">{price}€</Card.Text>
-                <Card.Text className="text-truncate small-text">inkl. MwSt, zzgl. Versand</Card.Text>
-            </Card.Body>
-            
-            </Card>
-        </Col>
-        ))}
-    </Row>
-    <Pagination
-    onNext={onNext}
-    onPrev={onPrev} 
-    disabled={disabled} />
-            
+                    <Card.Body className="p-0">
+                    <Card.Img variant="top" src={image} alt={title} style={{ height: '250px' }} />
+                    <Card.Title>{title}</Card.Title>
+                    <Card.Text className="text-truncate description">{description}</Card.Text>
+                    <Card.Text className="text-truncate price">{price}€</Card.Text>
+                    <Card.Text className="text-truncate small-text">inkl. MwSt, zzgl. Versand</Card.Text>
+                    <ProductButton  />      
+                </Card.Body>
+                
+                </Card>
+            </Col>
+            ))}
+        </Row>     
     </div>
 </div>
 );
