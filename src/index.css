@@ -21,16 +21,37 @@ h3 {
     outline: none;
 }
 
+button.card-button.read-more {
+    background-color: #fe1251;
+    border-color: #fe1251;
+}
+
+button.card-button.read-more:hover {
+    background-color: #bb103e;
+    border-color: #bb103e;
+}
+
+button.card-button.add-cart {
+    background-color: #000;
+    border-color: #000;
+}
+
+button.card-button.add-cart:hover {
+    background-color: #128707;
+        border-color: #128707;
+}
+
+
+
 .Content {
     font-family: sans-serif;
-    width: 90vw;
+    width: 80vw;
     margin: 0 auto;
     padding: 2rem 0;
     list-style: none;
-    /* display: flex; */
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    /* display: flex;  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-row-gap: 1rem;
-    grid-column-gap: 20px;
+    grid-column-gap: 20px; */
     justify-items: center;
     align-items: flex-start;
     flex-wrap: wrap;
@@ -90,6 +111,7 @@ h3 {
 
 .card:hover {
     box-shadow: rgb(51 51 51 / 15%) 0px 7px 15px, rgb(0 0 0 / 5%) 0px 0px 3px;
+    border-color: rgb(254 18 81 / 32%);
 }
 
 
@@ -152,7 +174,7 @@ h3 {
     line-height: 15px;
     margin-bottom: 7px;
     letter-spacing: normal;
-    color: rgb(254, 18, 81);
+    color: #fe1251;
     white-space: nowrap;
 }
 
