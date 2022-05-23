@@ -5,7 +5,6 @@ const useFetch = (url, numItems) => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   var fetchUrl = url+'?limit='+numItems
-  console.log(fetchUrl)
   
 
   const getData = async (fetchUrl) => {
@@ -17,6 +16,7 @@ const useFetch = (url, numItems) => {
     }
     let actualData = await response.json();
     setData(actualData)
+    console.log(actualData)
     setError(null);
     } catch (err) {
         setError(err.message);
