@@ -4,10 +4,10 @@ function ViewSingleProduct(props) {
   const id = props.id
   return (
     <>
-      <div>ViewSingleProduct {id}</div>
+      <div>ViewSingleProduct ss {props.id}</div>
     </>
     
-  )
+  );
 }
 
 export default ViewSingleProduct
