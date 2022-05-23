@@ -1,11 +1,8 @@
 import React from "react";
-import { Container, Navbar, Nav, Form, FormControl } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap'
 
-function Menu(props) {
-    const handleChange = props.handleChange
-
-
+function Menu() {
     return (
 
 
@@ -27,15 +24,6 @@ function Menu(props) {
             <LinkContainer to="/contact"><Nav.Link>Contact</Nav.Link></LinkContainer>
             <LinkContainer to="/login"><Nav.Link>Login/Register</Nav.Link></LinkContainer>
         </Nav>
-        <Form className="d-flex">
-            <FormControl
-            type="search"
-            placeholder="Search"
-            className="minput-searchbar e-2"
-            aria-label="Search"
-            onChange={handleChange}
-            />
-        </Form>
         </Navbar.Collapse>
     </Container>
     </Navbar>
