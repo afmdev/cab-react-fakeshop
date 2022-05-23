@@ -24,7 +24,7 @@ function ViewShop() {
     function handleChange(event) {
         let myValue = event.target.value
         result = data.filter((element) => {
-            return element.title.includes(myValue)
+            return element.title.toLowerCase().includes(myValue)
         })
         setFilter(result)
     }
@@ -116,7 +116,7 @@ return (
                 <Card.Text className="text-truncate description">{description}</Card.Text>
                 <Card.Text className="text-truncate price">{price}€</Card.Text>
                 <Card.Text className="text-truncate small-text">inkl. MwSt, zzgl. Versand</Card.Text>
-                <ProductButton  />
+                    <ProductButton id={`${id}`} />
             </Card.Body>
             
             </Card>

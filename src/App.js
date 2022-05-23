@@ -6,20 +6,24 @@ import Menu from './components/Menu'
 import ImageCarousel from './components/ImageCarousel'
 // import Pagination from './components/Pagination' 
 import ProductButton from './components/ProductButton' 
+import useFetch from './components/useFetch';
+// import fetchData from "./components/fetchData.js";
+
 
 
 
 // let myCounter = 0
 function App() {
-    const [data, setData] = useState(null)
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+    // const [data, setData] = useState(null)
+    // const [loading, setLoading] = useState(true)
+    // const [error, setError] = useState(null)
     const [filter, setFilter] = useState([])
-    // const [disabled, setDisabled] = useState(false)
-    // const [myCounter, setMyCounter] = useState(0)
-
-
-
+    const [disabled, setDisabled] = useState(false)
+    const [myCounter, setMyCounter] = useState(0)
+let myUrl = "https://fakestoreapi.com/products?limit=4"
+// const {data, loading, error} = fetchData(myUrl)
+    const {data, loading, error} = useFetch("https://fakestoreapi.com/products?limit=4")
+console.log(data, loading, error)
     let result = []
     function handleChange(event) {
         let myValue = event.target.value
@@ -29,7 +33,7 @@ function App() {
         setFilter(result)
     }
 
-
+//#region 
 //     const onPrev = (event) => {
 //         let prevPage = data.info.prev
 //         if (myCounter > 0  ) {
@@ -59,38 +63,37 @@ function App() {
 
 // let myUrl = "https://fakestoreapi.com/products?limit=4"
 // let myUrl = "./json/products.json"
-let myUrl = "./json/five-products.json"
 
-const getData = async () => {
-try {
-const response = await fetch(myUrl);
-if (!response.ok) {
-    throw new Error(
-    `This is an HTTP error: The status is ${response.status}`
-    );
-}
-let actualData = await response.json();
-const myData = actualData
-setData(actualData)
-setFilter(myData)
-setError(null);
-} catch (err) {
-    setError(err.message);
-setData(null);
-} finally {
-    setLoading(false);
-}
-}
 
-useEffect(() => {
-getData()
-//eslint-disable-next-line
-}, [])
+// const getData = async () => {
+// try {
+// const response = await fetch(myUrl);
+// if (!response.ok) {
+//     throw new Error(
+//     `This is an HTTP error: The status is ${response.status}`
+//     );
+// }
+// let actualData = await response.json();
+// const myData = actualData
+// setData(actualData)
+// setFilter(myData)
+// setError(null);
+// } catch (err) {
+//     setError(err.message);
+// setData(null);
+// } finally {
+//     setLoading(false);
+// }
+// }
 
+// useEffect(() => {
+// getData()
+// //eslint-disable-next-line
+// }, [])
+//#endregion
 return (
 
     <div className="App">
-        
     <Menu handleChange={handleChange} />
     <ImageCarousel />
 
@@ -99,7 +102,7 @@ return (
 
     {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
         <Row className="g-4">
-            {filter && filter.map(({ id, title, price, description, category, image }) => (
+            {data && data.map(({ id, title, price, description, category, image }) => (
 
             
             <Col key={id}>
@@ -114,8 +117,8 @@ return (
                     <Card.Title>{title}</Card.Title>
                     <Card.Text className="text-truncate description">{description}</Card.Text>
                     <Card.Text className="text-truncate price">{price}€</Card.Text>
-                    <Card.Text className="text-truncate small-text">inkl. MwSt, zzgl. Versand</Card.Text>
-                    <ProductButton  />      
+                    <Card.Text className="text-truncate small-text">inkl. MwSt, zzgl. Versand</Card.Text> 
+                    <ProductButton id={`${id}`} />
                 </Card.Body>
                 
                 </Card>

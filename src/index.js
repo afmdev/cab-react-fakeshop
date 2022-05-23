@@ -4,10 +4,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
-import Shop from './views/ViewShop'
-import Chat from './views/ViewChat'
-import Contact from './views/ViewContact'
-import Login from './views/ViewLogin'
+import ViewProducts from './views/ViewProducts'
+import ViewChat from './views/ViewChat'
+import ViewContact from './views/ViewContact'
+import ViewLogin from './views/ViewLogin'
+import ViewSingleProduct from './views/ViewSingleProduct'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,11 +16,11 @@ root.render(
   <BrowserRouter>
     <Routes>
       <Route exact path="/" element={<App />}/>
-      <Route path="/shop" element={<Shop />} />
-      <Route path="/chat" element={<Chat />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/login" element={<Login />} />
-
+      <Route path="/:id" element={<ViewProducts />}/>
+      <Route path="/chat" element={<ViewChat />} />
+      <Route path="/contact" element={<ViewContact />} />
+      <Route path="/login" element={<ViewLogin />} />
+      <Route path="shop/:id" element={<ViewSingleProduct />} />
     </Routes>
   </BrowserRouter>
   </>
