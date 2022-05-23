@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 
-const useFetch = (url, numItems) => {
+const useFetchSingle = (url, numItems) => {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  var fetchUrl = url+'?limit='+numItems
-  
+
+  var fetchUrl = url+'/'+numItems
+
+  console.log(fetchUrl)
 
   const getData = async (fetchUrl) => {
     try {
@@ -16,7 +18,6 @@ const useFetch = (url, numItems) => {
     }
     let actualData = await response.json();
     setData(actualData)
-    console.log(actualData)
     setError(null);
     } catch (err) {
         setError(err.message);
@@ -33,4 +34,4 @@ const useFetch = (url, numItems) => {
   return { data, loading, error, setData }
 };
 
-export default useFetch;
+export default useFetchSingle;
