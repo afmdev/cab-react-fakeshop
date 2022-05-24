@@ -11,7 +11,10 @@ return (
     <div className="Content">
     {loading && <div>A moment please...</div>}
     {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
-    {data && <div key="1">HOla data {`${productId}`}</div>}
+    {data && 
+        <div key="1">HOla data {`${productId}`}, {`${data.title}`}</div>
+
+    }
     </div>
 </div>
 );

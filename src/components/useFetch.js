@@ -16,7 +16,6 @@ const useFetch = (url, numItems) => {
     }
     let actualData = await response.json();
     setData(actualData)
-    console.log(actualData)
     setError(null);
     } catch (err) {
         setError(err.message);
