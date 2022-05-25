@@ -1,13 +1,18 @@
 import React from 'react'
-import { Row, Col, Card, Badge } from "react-bootstrap";
-import ProductButton from './ProductButton' 
+import { Container, Row, Col, Card, Badge, OverlayTrigger, Button, Tooltip } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { CartPlus } from 'react-bootstrap-icons';
 
 function ProductCards({data, error, loading}) {
+
+    const renderTooltip = (props) => (
+        <Tooltip id="button-tooltip" {...props}>Good idea 🤑</Tooltip>
+    );
 
     return (
         <div className="ProductCards">
             <div className="Content">
-            {loading && <div>A moment please...</div>}
+            {loading && <div className="loader">Loading...</div>}
             {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
                 <Row className="g-4">    
                     {data && data.map(({ id, title, price, description, category, image }) => (
@@ -23,7 +28,21 @@ function ProductCards({data, error, loading}) {
                             <Card.Text className="text-truncate description">{description}</Card.Text>
                             <Card.Text className="text-truncate price">{price}€</Card.Text>
                             <Card.Text className="text-truncate small-text">inkl. MwSt, zzgl. Versand</Card.Text> 
-                            <ProductButton id={`${id}`} />
+                            
+                            <Container className="d-flex justify-content-between p-0 m-0">
+                                <Link to={`../shop/${id}`} className="w-100">
+                                <Button size="sm" className="card-button read-more w-100" >Read More</Button>
+                                </Link>
+                                <OverlayTrigger
+                                placement="top"
+                                delay={{ show: 100, hide: 500 }}
+                                overlay={renderTooltip}>
+                                    <Button size="sm" className="card-button add-cart ml-3">
+                                        <CartPlus size={20} />
+                                    </Button>
+                                </OverlayTrigger>
+                            </Container>
+
                         </Card.Body>
                         </Card>
                     </Col>

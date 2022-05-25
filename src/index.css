@@ -9,12 +9,12 @@ body {
 }
 
 h1 {
-    margin-bottom: 1rem;
+    font-weight: 800;
+    line-height: 1;
 }
 
 h3 {
-    font-size: 1rem;
-    line-height: 1.4;
+    line-height: 1;
 }
 
 *:focus, *:focus-visible {
@@ -114,12 +114,32 @@ button.card-button.add-cart:hover {
     border-color: rgb(254 18 81 / 32%);
 }
 
+.rating.col {
+  display: flex!important;
+  align-items: center;
+  font-size: 14px;
+  color: #c5c5c5;
+}
 
+.rating.col div {
+  margin-right: 10px;
+}
 
-.col {
+.product-pictures {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px
+}
+
+.product-pictures div img {
+  margin: 10px;
+}
+
+/* .col {
     display: flex;
     justify-content: center;
-}
+} */
 
 .card-body {
     display: flex;
@@ -136,17 +156,32 @@ button.card-button.add-cart:hover {
     vertical-align: top;
     background: rgb(51, 51, 51);
     color: rgb(255, 255, 255);
+    margin-bottom: 20px;
 }
 
 .category span {
-    margin: 3px 6px;
-    font-family: Inter, sans-serif;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-size: 7.5px;
-    top: -2px;
-    position: relative;
-    padding: 0px 4px;
+  margin: 3px 6px;
+  font-family: Inter, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 9.5px;
+  top: -2px;
+  position: relative;
+  padding: 0px 4px;
+}
+
+.carousel-item {
+	transition: -webkit-transform 0.5s ease;
+	transition: transform 0.5s ease;
+	transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+	-webkit-backface-visibility: visible;
+	        backface-visibility: visible;
+}
+
+
+.carousel-inner img {
+  object-fit: cover;
+  height: 170px;
 }
 
 .card-title {
@@ -159,12 +194,23 @@ button.card-button.add-cart:hover {
     text-overflow: ellipsis; */
 }
 
+.product-info {
+  border: 1px solid #fe1251;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.ProductCards .row .col {
+  display: flex;
+  justify-content: center;
+}
+
 .description {
-    min-height: 21px;
-    margin-bottom: 10px;
-    font-size: 13px;
-    line-height: 2;
-    color: rgba(51, 51, 51, 0.75);
+  min-height: 21px;
+  margin-bottom: 30px;
+  font-size: 13px;
+  line-height: 20px;
+  color: rgba(51, 51, 51, 0.75);
 }
 
 .price {
@@ -176,6 +222,10 @@ button.card-button.add-cart:hover {
     letter-spacing: normal;
     color: #fe1251;
     white-space: nowrap;
+}
+
+.single {
+    font-size: 20px;
 }
 
 .small-text {
@@ -202,3 +252,74 @@ button.card-button.add-cart:hover {
 }
 
 
+
+
+.loader {
+    margin: 100px auto;
+    font-size: 25px;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    position: relative;
+    text-indent: -9999em;
+    -webkit-animation: load5 1.1s infinite ease;
+    animation: load5 1.1s infinite ease;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  @-webkit-keyframes load5 {
+    0%,
+    100% {
+      box-shadow: 0em -2.6em 0em 0em #fe1251, 1.8em -1.8em 0 0em rgba(254,18,81, 0.2), 2.5em 0em 0 0em rgba(254,18,81, 0.2), 1.75em 1.75em 0 0em rgba(254,18,81, 0.2), 0em 2.5em 0 0em rgba(254,18,81, 0.2), -1.8em 1.8em 0 0em rgba(254,18,81, 0.2), -2.6em 0em 0 0em rgba(254,18,81, 0.5), -1.8em -1.8em 0 0em rgba(254,18,81, 0.7);
+    }
+    12.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(254,18,81, 0.7), 1.8em -1.8em 0 0em #fe1251, 2.5em 0em 0 0em rgba(254,18,81, 0.2), 1.75em 1.75em 0 0em rgba(254,18,81, 0.2), 0em 2.5em 0 0em rgba(254,18,81, 0.2), -1.8em 1.8em 0 0em rgba(254,18,81, 0.2), -2.6em 0em 0 0em rgba(254,18,81, 0.2), -1.8em -1.8em 0 0em rgba(254,18,81, 0.5);
+    }
+    25% {
+      box-shadow: 0em -2.6em 0em 0em rgba(254,18,81, 0.5), 1.8em -1.8em 0 0em rgba(254,18,81, 0.7), 2.5em 0em 0 0em #fe1251, 1.75em 1.75em 0 0em rgba(254,18,81, 0.2), 0em 2.5em 0 0em rgba(254,18,81, 0.2), -1.8em 1.8em 0 0em rgba(254,18,81, 0.2), -2.6em 0em 0 0em rgba(254,18,81, 0.2), -1.8em -1.8em 0 0em rgba(254,18,81, 0.2);
+    }
+    37.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(254,18,81, 0.2), 1.8em -1.8em 0 0em rgba(254,18,81, 0.5), 2.5em 0em 0 0em rgba(254,18,81, 0.7), 1.75em 1.75em 0 0em #fe1251, 0em 2.5em 0 0em rgba(254,18,81, 0.2), -1.8em 1.8em 0 0em rgba(254,18,81, 0.2), -2.6em 0em 0 0em rgba(254,18,81, 0.2), -1.8em -1.8em 0 0em rgba(254,18,81, 0.2);
+    }
+    50% {
+      box-shadow: 0em -2.6em 0em 0em rgba(254,18,81, 0.2), 1.8em -1.8em 0 0em rgba(254,18,81, 0.2), 2.5em 0em 0 0em rgba(254,18,81, 0.5), 1.75em 1.75em 0 0em rgba(254,18,81, 0.7), 0em 2.5em 0 0em #fe1251, -1.8em 1.8em 0 0em rgba(254,18,81, 0.2), -2.6em 0em 0 0em rgba(254,18,81, 0.2), -1.8em -1.8em 0 0em rgba(254,18,81, 0.2);
+    }
+    62.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(254,18,81, 0.2), 1.8em -1.8em 0 0em rgba(254,18,81, 0.2), 2.5em 0em 0 0em rgba(254,18,81, 0.2), 1.75em 1.75em 0 0em rgba(254,18,81, 0.5), 0em 2.5em 0 0em rgba(254,18,81, 0.7), -1.8em 1.8em 0 0em #fe1251, -2.6em 0em 0 0em rgba(254,18,81, 0.2), -1.8em -1.8em 0 0em rgba(254,18,81, 0.2);
+    }
+    75% {
+      box-shadow: 0em -2.6em 0em 0em rgba(254,18,81, 0.2), 1.8em -1.8em 0 0em rgba(254,18,81, 0.2), 2.5em 0em 0 0em rgba(254,18,81, 0.2), 1.75em 1.75em 0 0em rgba(254,18,81, 0.2), 0em 2.5em 0 0em rgba(254,18,81, 0.5), -1.8em 1.8em 0 0em rgba(254,18,81, 0.7), -2.6em 0em 0 0em #fe1251, -1.8em -1.8em 0 0em rgba(254,18,81, 0.2);
+    }
+    87.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(254,18,81, 0.2), 1.8em -1.8em 0 0em rgba(254,18,81, 0.2), 2.5em 0em 0 0em rgba(254,18,81, 0.2), 1.75em 1.75em 0 0em rgba(254,18,81, 0.2), 0em 2.5em 0 0em rgba(254,18,81, 0.2), -1.8em 1.8em 0 0em rgba(254,18,81, 0.5), -2.6em 0em 0 0em rgba(254,18,81, 0.7), -1.8em -1.8em 0 0em #fe1251;
+    }
+  }
+  @keyframes load5 {
+    0%,
+    100% {
+      box-shadow: 0em -2.6em 0em 0em #fe1251, 1.8em -1.8em 0 0em rgba(254,18,81, 0.2), 2.5em 0em 0 0em rgba(254,18,81, 0.2), 1.75em 1.75em 0 0em rgba(254,18,81, 0.2), 0em 2.5em 0 0em rgba(254,18,81, 0.2), -1.8em 1.8em 0 0em rgba(254,18,81, 0.2), -2.6em 0em 0 0em rgba(254,18,81, 0.5), -1.8em -1.8em 0 0em rgba(254,18,81, 0.7);
+    }
+    12.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(254,18,81, 0.7), 1.8em -1.8em 0 0em #fe1251, 2.5em 0em 0 0em rgba(254,18,81, 0.2), 1.75em 1.75em 0 0em rgba(254,18,81, 0.2), 0em 2.5em 0 0em rgba(254,18,81, 0.2), -1.8em 1.8em 0 0em rgba(254,18,81, 0.2), -2.6em 0em 0 0em rgba(254,18,81, 0.2), -1.8em -1.8em 0 0em rgba(254,18,81, 0.5);
+    }
+    25% {
+      box-shadow: 0em -2.6em 0em 0em rgba(254,18,81, 0.5), 1.8em -1.8em 0 0em rgba(254,18,81, 0.7), 2.5em 0em 0 0em #fe1251, 1.75em 1.75em 0 0em rgba(254,18,81, 0.2), 0em 2.5em 0 0em rgba(254,18,81, 0.2), -1.8em 1.8em 0 0em rgba(254,18,81, 0.2), -2.6em 0em 0 0em rgba(254,18,81, 0.2), -1.8em -1.8em 0 0em rgba(254,18,81, 0.2);
+    }
+    37.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(254,18,81, 0.2), 1.8em -1.8em 0 0em rgba(254,18,81, 0.5), 2.5em 0em 0 0em rgba(254,18,81, 0.7), 1.75em 1.75em 0 0em #fe1251, 0em 2.5em 0 0em rgba(254,18,81, 0.2), -1.8em 1.8em 0 0em rgba(254,18,81, 0.2), -2.6em 0em 0 0em rgba(254,18,81, 0.2), -1.8em -1.8em 0 0em rgba(254,18,81, 0.2);
+    }
+    50% {
+      box-shadow: 0em -2.6em 0em 0em rgba(254,18,81, 0.2), 1.8em -1.8em 0 0em rgba(254,18,81, 0.2), 2.5em 0em 0 0em rgba(254,18,81, 0.5), 1.75em 1.75em 0 0em rgba(254,18,81, 0.7), 0em 2.5em 0 0em #fe1251, -1.8em 1.8em 0 0em rgba(254,18,81, 0.2), -2.6em 0em 0 0em rgba(254,18,81, 0.2), -1.8em -1.8em 0 0em rgba(254,18,81, 0.2);
+    }
+    62.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(254,18,81, 0.2), 1.8em -1.8em 0 0em rgba(254,18,81, 0.2), 2.5em 0em 0 0em rgba(254,18,81, 0.2), 1.75em 1.75em 0 0em rgba(254,18,81, 0.5), 0em 2.5em 0 0em rgba(254,18,81, 0.7), -1.8em 1.8em 0 0em #fe1251, -2.6em 0em 0 0em rgba(254,18,81, 0.2), -1.8em -1.8em 0 0em rgba(254,18,81, 0.2);
+    }
+    75% {
+      box-shadow: 0em -2.6em 0em 0em rgba(254,18,81, 0.2), 1.8em -1.8em 0 0em rgba(254,18,81, 0.2), 2.5em 0em 0 0em rgba(254,18,81, 0.2), 1.75em 1.75em 0 0em rgba(254,18,81, 0.2), 0em 2.5em 0 0em rgba(254,18,81, 0.5), -1.8em 1.8em 0 0em rgba(254,18,81, 0.7), -2.6em 0em 0 0em #fe1251, -1.8em -1.8em 0 0em rgba(254,18,81, 0.2);
+    }
+    87.5% {
+      box-shadow: 0em -2.6em 0em 0em rgba(254,18,81, 0.2), 1.8em -1.8em 0 0em rgba(254,18,81, 0.2), 2.5em 0em 0 0em rgba(254,18,81, 0.2), 1.75em 1.75em 0 0em rgba(254,18,81, 0.2), 0em 2.5em 0 0em rgba(254,18,81, 0.2), -1.8em 1.8em 0 0em rgba(254,18,81, 0.5), -2.6em 0em 0 0em rgba(254,18,81, 0.7), -1.8em -1.8em 0 0em #fe1251;
+    }
+  }
+  

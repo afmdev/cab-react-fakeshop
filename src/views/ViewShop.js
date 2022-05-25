@@ -8,7 +8,7 @@ import useFetch from '../components/useFetch'
 function ViewShop() {
 
     const [filter, setFilter] = useState([])
-    const items = 3
+    const items = 8
     const {data, loading, error, setData} = useFetch("https://fakestoreapi.com/products", items)
 
 
