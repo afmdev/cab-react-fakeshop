@@ -7,7 +7,7 @@ import ProductCards from './components/ProductCards';
 
 // let myCounter = 0
 function App() {
-    const items = 3
+    const items = 8
     const {data, loading, error} = useFetch("https://fakestoreapi.com/products", items)
     return (
         <div className="App">
