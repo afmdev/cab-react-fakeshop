@@ -9,7 +9,7 @@ function ViewShop() {
 
     const [filter, setFilter] = useState([])
     const items = 8
-    const {data, loading, error, setData} = useFetch("https://fakestoreapi.com/products", items)
+    const {data, loading, error, setData} = useFetch("./json/products.json", items)
 
 
     
