@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Container, Row, Col, Card, Badge, OverlayTrigger, Button, Tooltip } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CartPlus } from 'react-bootstrap-icons';
+import { ProductsContext } from '../context/productsContext'
 
-function ProductCards({data, error, loading}) {
+function ProductCards() {
+
+    const { products, loader, error, fetchData } = useContext(ProductsContext)
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+    
 
     const renderTooltip = (props) => (
         <Tooltip id="button-tooltip" {...props}>Good idea 🤑</Tooltip>
@@ -12,10 +20,10 @@ function ProductCards({data, error, loading}) {
     return (
         <div className="ProductCards">
             <div className="Content">
-            {loading && <div className="loader">Loading...</div>}
+            {loader && <div className="loader">Loading...</div>}
             {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
                 <Row className="g-4">    
-                    {data && data.map(({ id, title, price, description, category, image }) => (
+                    {products && products.map(({ id, title, price, description, category, image }) => (
                     <Col key={id}>
                         <Card key={id} className="h-100" style={{ width: '18rem' }}>
                         

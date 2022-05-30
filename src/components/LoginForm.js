@@ -44,7 +44,7 @@ function handleSubmit(event) {
             <Link to="/">Forgot Password?</Link>
             <hr />
             <Button block="true" type="submit" className="btn-sing-up">
-            Sing Up
+            Sign Up
             </Button>
         </Form>
         </div>
