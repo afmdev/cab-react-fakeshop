@@ -1,33 +1,33 @@
-import React, { useState } from 'react'
-import Menu from '../components/Menu'
+import React, { useContext, useEffect, useState } from 'react'
 import Searchbar from '../components/Searchbar'
 import ImageCarousel from '../components/ImageCarousel'
 import ProductCards from '../components/ProductCards'
-import useFetch from '../components/useFetch'
+import { ProductsContext } from '../context/productsContext'
 
 function ViewShop() {
+    // const items = 8
+    // const {data, loading, error, setData} = useFetch("./json/products.json", items)
+    const { products, fetchData, setProducts, setFilter, Filter } = useContext(ProductsContext)
 
-    const [filter, setFilter] = useState([])
-    const items = 8
-    const {data, loading, error, setData} = useFetch("./json/products.json", items)
+    useEffect(() => {
+        fetchData()
+    }, [])
 
-
-    
     function handleChange(event) {
         let myValue = event.target.value
-        let result = data.filter((element) => {
+        let result = products.filter((element) => {
             return element.title.toLowerCase().includes(myValue)
         })
         console.log(result)
-        setData(result)
+        setFilter(result)
+        
         
     }
     return (
         <div className="ViewShop">
-        <Menu/>
-        <Searchbar handleChange={handleChange}/>
-        <ImageCarousel />
-        <ProductCards  data={data} error={error} loading={loading} filter={filter}  />
+            <Searchbar handleChange={handleChange}/>
+            <ImageCarousel />
+            <ProductCards />
         </div>
     );
 }

@@ -6,6 +6,7 @@ export const ProductContextProvider = (props) => {
   const [products, setProducts] = useState(null)
   const [loader, setLoader] = useState(true)
   const [error, setError] = useState(null)
+  const [filter, setFilter] = useState([])
   
 
   const fetchData = () => {
@@ -14,8 +15,10 @@ export const ProductContextProvider = (props) => {
       return response.json();
     })
     .then((data) => {
+      const myData = data
       console.log(data)
       setProducts(data)
+      setFilter(myData)
       setLoader(false)
     })
     .catch((error) => {
@@ -24,7 +27,7 @@ export const ProductContextProvider = (props) => {
   }
 
   return (
-    <ProductsContext.Provider value={{products, loader, error, fetchData}}>
+    <ProductsContext.Provider value={{products, loader, error, filter, setFilter, fetchData, setProducts}}>
       {props.children}
     </ProductsContext.Provider>
   )
