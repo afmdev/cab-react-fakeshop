@@ -9,27 +9,44 @@ import ViewChat from './views/ViewChat'
 import ViewContact from './views/ViewContact'
 import ViewLogin from './views/ViewLogin'
 import ViewSingleProduct from './views/ViewSingleProduct'
+import NoMatch from './components/NoMatch'
 import { ProductContextProvider } from './context/productsContext'
+import Menu from './components/Menu';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
- 
-    <ProductContextProvider>
-       <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<App />}/>
-          <Route path="/:id" element={<ViewShop />}/>
-          <Route path="/chat" element={<ViewChat />} />
-          <Route path="/contact" element={<ViewContact />} />
-          <Route path="/login" element={<ViewLogin />} />
+  <ProductContextProvider>
+  <BrowserRouter>
+  <Menu/>
+  <Routes>
+          <Route path="/" element={<App />}/>
+          <Route path="/shop" element={<ViewShop />}/>
+          <Route path="chat" element={<ViewChat />} />
+          <Route path="contact" element={<ViewContact />} />
+          <Route path="login" element={<ViewLogin />} />
           <Route path="shop/:id" element={<ViewSingleProduct />} />
+          <Route path="*" element={<NoMatch />} />
         </Routes>
       </BrowserRouter>
     </ProductContextProvider>
-    
   </>
 );
 
 
-
+// <>
+//   <ProductContextProvider>
+//   <BrowserRouter>
+//   <Menu/>
+//   <Routes>
+//           <Route path="/" element={<App />}/>
+//           <Route path=":id" element={<ViewShop />}/>
+//           <Route path="chat" element={<ViewChat />} />
+//           <Route path="contact" element={<ViewContact />} />
+//           <Route path="login" element={<ViewLogin />} />
+//           <Route path="shop/:id" element={<ViewSingleProduct />} />
+//           <Route path="*" element={<NoMatch />} />
+//         </Routes>
+//       </BrowserRouter>
+//     </ProductContextProvider>
+//   </>

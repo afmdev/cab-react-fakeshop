@@ -6,7 +6,7 @@ import { ProductsContext } from '../context/productsContext'
 
 function ProductCards() {
 
-    const { products, loader, error, fetchData } = useContext(ProductsContext)
+    const { products, loader, error, fetchData, filter } = useContext(ProductsContext)
 
     useEffect(() => {
         fetchData()
@@ -22,8 +22,8 @@ function ProductCards() {
             <div className="Content">
             {loader && <div className="loader">Loading...</div>}
             {error && (<div>{`There is a problem fetching the post data - ${error}`}</div>)}
-                <Row className="g-4">    
-                    {products && products.map(({ id, title, price, description, category, image }) => (
+                <Row className="g-4">
+                    {filter ? filter.map(({ id, title, price, description, category, image }) => (
                     <Col key={id}>
                         <Card key={id} className="h-100" style={{ width: '18rem' }}>
                         
@@ -54,7 +54,7 @@ function ProductCards() {
                         </Card.Body>
                         </Card>
                     </Col>
-                    ))}
+                    )) : <p>hola</p>}
                 </Row>     
             </div>
         </div>

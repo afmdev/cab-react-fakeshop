@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, OverlayTrigger, Button, Tooltip  } from 'react-bootstrap';
+import { Container, Row, Col, OverlayTrigger, Button, Tooltip, Badge  } from 'react-bootstrap';
 import ReactStars from 'react-stars'
 import { HeartFill } from 'react-bootstrap-icons';
 
@@ -28,7 +28,7 @@ return (
                             </Col>
                         </Col>
                         <Col sm={4} className="product-info">
-                        <div className="category"><span>{`${data.category}`}</span></div>
+                        <Badge pill bg="dark">{`${data.category}`}</Badge>
                         <h1>{`${data.title}`}</h1>
                         <Row>
                             <Col className="rating">
