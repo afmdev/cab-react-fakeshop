@@ -12,24 +12,27 @@ import ViewSingleProduct from './views/ViewSingleProduct'
 import NoMatch from './components/NoMatch'
 import { ProductContextProvider } from './context/productsContext'
 import Menu from './components/Menu';
+import { AuthContextProvider } from './context/authContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-  <ProductContextProvider>
-  <BrowserRouter>
-  <Menu/>
-  <Routes>
-          <Route path="/" element={<App />}/>
-          <Route path="/shop" element={<ViewShop />}/>
-          <Route path="chat" element={<ViewChat />} />
-          <Route path="contact" element={<ViewContact />} />
-          <Route path="login" element={<ViewLogin />} />
-          <Route path="shop/:id" element={<ViewSingleProduct />} />
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
-      </BrowserRouter>
-    </ProductContextProvider>
+    <AuthContextProvider>
+      <ProductContextProvider>
+        <BrowserRouter>
+          <Menu/>
+          <Routes>
+            <Route path="/" element={<App />}/>
+            <Route path="/shop" element={<ViewShop />}/>
+            <Route path="chat" element={<ViewChat />} />
+            <Route path="contact" element={<ViewContact />} />
+            <Route path="login" element={<ViewLogin />} />
+            <Route path="shop/:id" element={<ViewSingleProduct />} />
+            <Route path="*" element={<NoMatch />} />
+          </Routes>
+        </BrowserRouter>
+      </ProductContextProvider>
+    </AuthContextProvider>
   </>
 );
 
