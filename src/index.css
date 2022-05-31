@@ -320,7 +320,10 @@ border-color: #beb6b6;
 }
 
 
-
+.navbar-light .navbar-fakeshop {
+  color: rgba(0,0,0,.55);
+  border-color: rgba(0,0,0,.1);
+}
 
 
 

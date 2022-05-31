@@ -16,7 +16,6 @@ export const ProductContextProvider = (props) => {
     })
     .then((data) => {
       const myData = data
-      console.log(data)
       setProducts(data)
       setFilter(myData)
       setLoader(false)
