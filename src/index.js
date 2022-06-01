@@ -13,6 +13,7 @@ import NoMatch from './components/NoMatch'
 import { ProductContextProvider } from './context/productsContext'
 import Menu from './components/Menu';
 import { AuthContextProvider } from './context/authContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,7 +25,7 @@ root.render(
           <Routes>
             <Route path="/" element={<App />}/>
             <Route path="/shop" element={<ViewShop />}/>
-            <Route path="chat" element={<ViewChat />} />
+            <Route path="chat" element={<ProtectedRoute><ViewChat /></ProtectedRoute>} />
             <Route path="contact" element={<ViewContact />} />
             <Route path="login" element={<ViewLogin />} />
             <Route path="shop/:id" element={<ViewSingleProduct />} />
@@ -32,7 +33,9 @@ root.render(
           </Routes>
         </BrowserRouter>
       </ProductContextProvider>
-    </AuthContextProvider>
+    
+    
+      </AuthContextProvider>
   </>
 );
 
