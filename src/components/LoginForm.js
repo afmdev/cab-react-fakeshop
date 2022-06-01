@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, FloatingLabel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 function LoginForm() {
@@ -16,27 +16,35 @@ function handleSubmit(event) {
 
     return (
         <div className="LoginForm">
-        <div className="login-image"></div>
+        {/*<div className="login-image"></div>*/}
         <div className="login-title">
             <h1>Login</h1>
         </div>
         <Form onSubmit={handleSubmit} className="form-container">
+        
             <Form.Group>
-            <Form.Control
-                autoFocus
-                placeholder="E-Mail"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            </Form.Group>
-            <Form.Group>
-            <Form.Control
-                placeholder="Password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+
+            <FloatingLabel
+                controlId="floatingInput"
+                label="Email address"
+                className="mb-3"
+            >
+                <Form.Control 
+                    type="email" 
+                    placeholder="name@example.com" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </FloatingLabel>
+            <FloatingLabel controlId="floatingPassword" label="Password">
+                <Form.Control 
+                    type="password" 
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)} 
+                />
+            </FloatingLabel>
+
             </Form.Group>
             <Button block="true" type="submit" disabled={!validateForm()}>
             Login
