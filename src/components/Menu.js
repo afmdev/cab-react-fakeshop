@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import { Container, Navbar, Nav, Offcanvas, Button, Link } from "react-bootstrap";
+import { Navbar, Nav, Offcanvas, Button } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap'
 import { AuthContext } from "../context/authContext";
-import { CartPlus } from 'react-bootstrap-icons';
+import { BoxArrowRight, PersonCircle } from 'react-bootstrap-icons';
 
 
 function Menu() {
@@ -10,7 +10,7 @@ function Menu() {
     const { user, setUser } = useContext(AuthContext)
 
     const login = () => {
-        setUser({userName:"Raúl"})
+        setUser({userName:"Alex"})
         console.log(user)
     }
     const logout = () => {
@@ -49,8 +49,8 @@ function Menu() {
             <Nav>
             <div>
                 {user 
-                ? (<span>{user.userName}{' '}<CartPlus size={20} /></span>) 
-                : (<div><Button variant="danger" size="sm" onClick={login}>login</Button>{' '}<Button variant="success" size="sm" onClick={logout}>register</Button></div>)
+                ? (<span className="d-flex align-items-center"><PersonCircle size={20} className="m-1"/>{' '}{user.userName}{' |'}<Button variant="link" size="sm" onClick={logout}><BoxArrowRight size={20} /></Button></span>) 
+                : (<div><Button variant="danger" size="sm" onClick={login}>login</Button>{' '}<Button variant="dark" size="sm" onClick={logout}>register</Button></div>)
                 }
             </div>
             </Nav>

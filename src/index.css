@@ -325,6 +325,19 @@ border-color: #beb6b6;
   border-color: rgba(0,0,0,.1);
 }
 
+.btn-danger {
+  color: #fff;
+  background-color: #fe1251;
+  border-color: #fe1251;
+}
+
+.btn-link {
+  color: #fe1251;
+}
+
+.btn-link:hover {
+    color: #912240;
+}
 
 
 
