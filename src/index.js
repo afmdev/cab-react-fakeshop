@@ -14,6 +14,7 @@ import { ProductContextProvider } from './context/productsContext'
 import Menu from './components/Menu';
 import { AuthContextProvider } from './context/authContext';
 import ProtectedRoute from './components/ProtectedRoute';
+import ViewNoLogged from './views/ViewNoLogged';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -29,6 +30,7 @@ root.render(
             <Route path="contact" element={<ViewContact />} />
             <Route path="login" element={<ViewLogin />} />
             <Route path="shop/:id" element={<ViewSingleProduct />} />
+            <Route path="no-logged" element={<ViewNoLogged />} />
             <Route path="*" element={<NoMatch />} />
           </Routes>
         </BrowserRouter>
