@@ -12,6 +12,7 @@ import Menu from './components/Menu';
 import ProtectedRoute from './components/ProtectedRoute';
 import ViewNoLogged from './views/ViewNoLogged';
 import ViewRegister from './views/ViewRegister';
+import ViewMyAccount from './views/ViewMyAccount';
 
 function App() {
 	// console.log(app);
@@ -26,6 +27,7 @@ function App() {
 						<Route path="contact" element={<ViewContact />} />
 						<Route path="login" element={<ViewLogin />} />
 						<Route path="register" element={<ViewRegister />} />
+						<Route path="my-account" element={<ProtectedRoute><ViewMyAccount /></ProtectedRoute>} />
 						<Route path="shop/:id" element={<ViewSingleProduct />} />
 						<Route path="no-logged" element={<ViewNoLogged />} />
 						<Route path="*" element={<NoMatch />} />
