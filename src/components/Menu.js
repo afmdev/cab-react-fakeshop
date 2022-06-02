@@ -3,20 +3,22 @@ import { Navbar, Nav, Offcanvas, Button } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap'
 import { AuthContext } from "../context/authContext";
 import { BoxArrowRight, PersonCircle } from 'react-bootstrap-icons';
+import { Link } from "react-router-dom";
 
 
 function Menu() {
 
 	const { user, setUser } = useContext(AuthContext)
 
-	const login = () => {
-		setUser({ userName: "Alex" })
-		console.log(user)
-	}
-	const logout = () => {
-		setUser(null)
-		console.log(user)
-	}
+	// const login = () => {
+	// 	setUser({ userName: "Alex" })
+	// 	console.log(user)
+	// }
+	// const logout = () => {
+	// 	setUser(null)
+	// 	console.log(user)
+	// }
+	// onClick = { logout }
 
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
@@ -36,13 +38,12 @@ function Menu() {
 						<Nav.Link className="p-0"><img alt="React Fakeshop" src="/afm.svg" className="d-inline-block align-top logo" width="38px" height="38px" /></Nav.Link>
 					</LinkContainer>
 				</Navbar.Brand>
-				<Navbar className="d-none d-md-flex d-sm-block p-0">
+				<Navbar className="d-none d-sm-flex d-sm-block p-0">
 					<Nav>
 						<LinkContainer to="/"><Nav.Link>Home</Nav.Link></LinkContainer>
 						<LinkContainer to="/shop"><Nav.Link>Shop</Nav.Link></LinkContainer>
 						<LinkContainer to="/chat"><Nav.Link>Chat</Nav.Link></LinkContainer>
 						<LinkContainer to="/contact"><Nav.Link>Contact</Nav.Link></LinkContainer>
-						<LinkContainer to="/login"><Nav.Link onClick={handleClose}>Login/Register</Nav.Link></LinkContainer>
 					</Nav>
 				</Navbar>
 
@@ -50,8 +51,8 @@ function Menu() {
 					<Nav>
 						<div>
 							{user
-								? (<span className="d-flex align-items-center"><PersonCircle size={20} className="m-1" />{' '}{user.userName}{' |'}<Button variant="link" size="sm" onClick={logout}><BoxArrowRight size={20} /></Button></span>)
-								: (<div><Button variant="danger" size="sm" onClick={login}>login</Button>{' '}<Button variant="dark" size="sm" onClick={logout}>register</Button></div>)
+								? (<div className="d-flex align-items-center username"><PersonCircle size={20} className="m-1" />{' '}<span className="pe-2 fs-6 font-monospace">{user.email} </span>{'|'}<Button variant="link" size="sm" className="ps-2"><BoxArrowRight size={20} /></Button></div>)
+								: (<div><Link to="/login"><Button variant="danger" size="sm">login</Button></Link>{' '}<Link to="/register"><Button variant="dark" size="sm">register</Button></Link></div>)
 							}
 						</div>
 					</Nav>
@@ -66,7 +67,8 @@ function Menu() {
 					<LinkContainer to="/shop"><Nav.Link onClick={handleClose}>Shop</Nav.Link></LinkContainer>
 					<LinkContainer to="/chat"><Nav.Link onClick={handleClose}>Chat</Nav.Link></LinkContainer>
 					<LinkContainer to="/contact"><Nav.Link onClick={handleClose}>Contact</Nav.Link></LinkContainer>
-					<LinkContainer to="/login"><Nav.Link onClick={handleClose}>Login/Register</Nav.Link></LinkContainer>
+					<LinkContainer to="/login"><Nav.Link onClick={handleClose}>Login</Nav.Link></LinkContainer>
+					<LinkContainer to="/register"><Nav.Link onClick={handleClose}>Register</Nav.Link></LinkContainer>
 				</Offcanvas.Body>
 			</Offcanvas>
 		</Navbar>

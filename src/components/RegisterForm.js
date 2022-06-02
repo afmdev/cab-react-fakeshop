@@ -3,9 +3,9 @@ import { Form, Button, FloatingLabel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 
-function LoginForm() {
+function RegisterForm() {
 
-	const { login } = useContext(AuthContext)
+	const { register } = useContext(AuthContext)
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 
@@ -18,18 +18,18 @@ function LoginForm() {
 		setPassword(e.target.value)
 	}
 
-	const handleLogin = (e) => {
+	const handleRegister = (e) => {
 		e.preventDefault()
-		login(email, password)
+		register(email, password)
 	}
 
+
 	return (
-		<div className="LoginForm">
+		<div className="RegisterForm">
 			{/*<div className="login-image"></div>*/}
 			<div className="login-title">
-				<h1>Login</h1>
+				<h1>Register</h1>
 			</div>
-
 			<Form className="form-container">
 				<Form.Group>
 
@@ -52,19 +52,22 @@ function LoginForm() {
 					</FloatingLabel>
 
 				</Form.Group>
-				<Button block="true" type="submit" onClick={handleLogin} >
-					Login
+
+				<Button block="true" type="submit" onClick={handleRegister}>
+					Register
 				</Button>
-				<Link to="/">Forgot Password?</Link>
+
 				<hr />
-				<Link to="/register">
+				<p> Already have an account?</p>
+				<Link to="/login">
 					<Button block="true" type="submit" className="btn-sign-up">
-						Register
+						Login
 					</Button>
 				</Link>
+
 			</Form>
 		</div>
 	);
 }
 
-export default LoginForm
+export default RegisterForm
