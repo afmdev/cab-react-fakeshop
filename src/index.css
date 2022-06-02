@@ -242,13 +242,13 @@ color: rgba(51, 51, 51, 0.75);
   border-radius: 100px;
 }
 
-.LoginForm, .RegisterForm {
+.LoginForm, .RegisterForm, .MyAccount {
 width: 285px;
 margin: 0 auto;
 text-align: center;
 }
 
-.LoginForm form, .RegisterForm form {
+.LoginForm form, .RegisterForm form, .MyAccount Form {
   margin: 0 auto;
   max-width: 240px;
   border: 2px solid #fe1251;
@@ -257,14 +257,14 @@ text-align: center;
   background: #f1f1f1;
 }
 
-.LoginForm h1, .RegisterForm h1 {
+.LoginForm h1, .RegisterForm h1, .MyAccount h1 {
   color: #fff;
   font-weight: 300;
   text-transform: uppercase;
   font-size: 21px;
 }
 
-.LoginForm .login-title, .RegisterForm .login-title {
+.LoginForm .login-title, .RegisterForm .login-title, .MyAccount .login-title {
   width: 220px;
   height: 80px;
   background-color: #fe1251;
@@ -274,7 +274,7 @@ text-align: center;
   padding-top: 5px;
 }
 
-.LoginForm .login-image, .RegisterForm .login-image {
+.LoginForm .login-image, .RegisterForm .login-image, .MyAccount .login-image {
   width: 100px;
   height: 100px;
   border-radius: 100px;
@@ -285,41 +285,34 @@ text-align: center;
   background-size: cover;
 }
 
-.LoginForm input, .RegisterForm input {
+.LoginForm input, .RegisterForm input, .MyAccount input {
 margin-bottom: 20px;
 }
 
-.LoginForm a, .LoginForm a {
+.LoginForm a, .RegisterForm a, .MyAccount a {
 display: block;
 }
 
-.LoginForm button, .RegisterForm button {
+.LoginForm button, .RegisterForm button, .MyAccount button {
 width: 100%;
 background-color: #fe1251;
 border-color: #fe1251;
 margin-bottom: 10px;
 }
 
-.LoginForm .btn-sign-up, .RegisterForm .btn-sign-up {
+.LoginForm .btn-sign-up, .RegisterForm .btn-sign-up, .MyAccount .btn-sign-up {
 width: 100%;
 background-color: #8f8f8f;
 border-color: #8f8f8f;
 margin-bottom: 10px;
 }
 
-.LoginForm button:hover, .RegisterForm button:hover {
+.LoginForm button:hover, .RegisterForm button:hover, .MyAccount button:hover {
 width: 100%;
 background-color: #000000;
 border-color: #000000;
 margin-bottom: 10px;
 }
-
-
-.btn-primary.disabled, .btn-primary:disabled {
-background: #beb6b6;
-border-color: #beb6b6;
-}
-
 
 .navbar-light .navbar-fakeshop {
   color: rgba(0,0,0,.55);
@@ -340,12 +333,9 @@ border-color: #beb6b6;
     color: #912240;
 }
 
-
 .offcanvas-start {
   width: 250px;
 }
-
-
 
 
 

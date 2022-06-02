@@ -1,5 +1,5 @@
-import { createContext, useState } from 'react'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { createContext, useEffect, useState } from 'react'
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from '../config';
 import { useNavigate } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ export const AuthContextProvider = (props) => {
 			)
 			const user = userCredential.user;
 			setUser(user)
-			redirectTo("/")
+			redirectTo("/my-account")
 			console.log("userCredential", userCredential)
 		}
 		catch (error) {
@@ -37,6 +37,7 @@ export const AuthContextProvider = (props) => {
 				// Signed in 
 				const user = userCredential.user;
 				setUser(user)
+				redirectTo("/my-account")
 			})
 			.catch((error) => {
 				setUser(null)
@@ -45,7 +46,33 @@ export const AuthContextProvider = (props) => {
 			});
 	}
 
-	return <AuthContext.Provider value={{ user, setUser, register, login }}>
+	const checkIfUserIsLogged = () => {
+		onAuthStateChanged(auth, (user) => {
+			if (user) {
+				const uid = user.uid;
+				setUser(user)
+			} else {
+				setUser(null)
+			}
+		});
+	}
+
+	useEffect(() => {
+		checkIfUserIsLogged()
+	}, [])
+
+	const logout = () => {
+		signOut(auth).then(() => {
+			setUser(null)
+		}).catch((error) => {
+			console.log(error)
+		});
+	}
+
+
+
+
+	return <AuthContext.Provider value={{ user, setUser, register, login, logout }}>
 		{props.children}
 	</AuthContext.Provider>
 }

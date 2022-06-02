@@ -3,7 +3,7 @@ import { Form, Button, FloatingLabel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 
-function LoginForm() {
+function MyAccount() {
 
 	const { login } = useContext(AuthContext)
 	const [email, setEmail] = useState("")
@@ -24,10 +24,10 @@ function LoginForm() {
 	}
 
 	return (
-		<div className="LoginForm">
+		<div className="MyAccount">
 			{/*<div className="login-image"></div>*/}
 			<div className="login-title">
-				<h1>Login</h1>
+				<h1>My Account</h1>
 			</div>
 
 			<Form className="form-container">
@@ -55,18 +55,11 @@ function LoginForm() {
 
 				</Form.Group>
 				<Button block="true" type="submit" onClick={handleLogin} >
-					Login
+					Save Changes
 				</Button>
-				<Link to="/">Forgot Password?</Link>
-				<hr />
-				<Link to="/register">
-					<Button block="true" type="submit" className="btn-sign-up">
-						Register
-					</Button>
-				</Link>
 			</Form>
 		</div>
 	);
 }
 
-export default LoginForm
+export default MyAccount
