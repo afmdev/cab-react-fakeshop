@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { AuthContext } from "../context/authContext";
 import { BoxArrowRight, PersonCircle } from 'react-bootstrap-icons';
 import { Link } from "react-router-dom";
+import OpenModal from './OpenModal'
 
 
 function Menu() {
@@ -51,9 +52,13 @@ function Menu() {
 					<Nav>
 						<div>
 							{user
-								? (<div className="d-flex align-items-center username"><Link to="/my-account" className="text-decoration-none text-reset"><PersonCircle size={20} className="m-1" />{' '}<span className="pe-2 fs-6 font-monospace">{user.email} </span></Link>{'|'}<Button variant="link" size="sm" className="ps-2" onClick={logout}><BoxArrowRight size={20} /></Button></div>)
+								? (<div className="d-flex align-items-center username"><Link to="/my-account" className="text-decoration-none text-reset"><PersonCircle size={20} className="m-1" />{' '}<span className="pe-2 fs-6 font-monospace">{user.email} </span></Link>{'|'}<OpenModal /></div>)
 								: (<div><Link to="/login"><Button variant="danger" size="sm">login</Button></Link>{' '}<Link to="/register"><Button variant="dark" size="sm">register</Button></Link></div>)
 							}
+							{/* {user
+								? (<div className="d-flex align-items-center username"><Link to="/my-account" className="text-decoration-none text-reset"><PersonCircle size={20} className="m-1" />{' '}<span className="pe-2 fs-6 font-monospace">{user.email} </span></Link>{'|'}<Button variant="link" size="sm" className="ps-2" onClick={logout}><BoxArrowRight size={20} /></Button></div>)
+								: (<div><Link to="/login"><Button variant="danger" size="sm">login</Button></Link>{' '}<Link to="/register"><Button variant="dark" size="sm">register</Button></Link></div>)
+							} */}
 						</div>
 					</Nav>
 				</Navbar>

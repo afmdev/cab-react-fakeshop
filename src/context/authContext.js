@@ -51,6 +51,7 @@ export const AuthContextProvider = (props) => {
 			if (user) {
 				const uid = user.uid;
 				setUser(user)
+				redirectTo("/")
 			} else {
 				setUser(null)
 			}

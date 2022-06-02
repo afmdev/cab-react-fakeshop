@@ -1,11 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Form, Button, FloatingLabel } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 
 function MyAccount() {
 
-	const { login } = useContext(AuthContext)
+	const { login, user } = useContext(AuthContext)
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 
@@ -26,8 +25,9 @@ function MyAccount() {
 	return (
 		<div className="MyAccount">
 			{/*<div className="login-image"></div>*/}
+			<div className="fs-1 fw-bold mb-5 ">Welcome <br /> {user.email}</div>
 			<div className="login-title">
-				<h1>My Account</h1>
+				<h1>Edit  Account</h1>
 			</div>
 
 			<Form className="form-container">

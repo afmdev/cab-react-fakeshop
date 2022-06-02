@@ -33,10 +33,11 @@ function RegisterForm() {
 			<Form className="form-container">
 				<Form.Group>
 
-					<FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
+					<FloatingLabel controlId="floatingInput" label="E-mail" className="mb-3">
 						<Form.Control
 							type="email"
 							name="email"
+							placeholder="E-mail"
 							value={email}
 							// onChange={(e) => setEmail(e.target.value)} />
 							onChange={handleEmailChange} />
@@ -46,6 +47,7 @@ function RegisterForm() {
 						<Form.Control
 							type="password"
 							name="password"
+							placeholder="Password"
 							value={password}
 							// onChange={(e) => setPassword(e.target.value)} />
 							onChange={handlePasswordChange} />
