@@ -1,57 +1,70 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Form, Button, FloatingLabel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/authContext';
 
 function LoginForm() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
 
-    function validateForm() {
-        return email.length > 0 && password.length > 0;
-    }
+	const { login } = useContext(AuthContext)
+	const [email, setEmail] = useState("")
+	const [password, setPassword] = useState("")
 
-    function handleSubmit(event) {
-        event.preventDefault();
-    }
+	const handleEmailChange = (e) => {
+		setEmail(e.target.value)
+	}
 
-    return (
-        <div className="LoginForm">
-            {/*<div className="login-image"></div>*/}
-            <div className="login-title">
-                <h1>Login</h1>
-            </div>
-            <Form onSubmit={handleSubmit} className="form-container">
+	const handlePasswordChange = (e) => {
+		console.log(password)
+		setPassword(e.target.value)
+	}
 
-                <Form.Group>
+	const handleLogin = (e) => {
+		e.preventDefault()
+		login(email, password)
+	}
 
-                    <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
-                        <Form.Control
-                            type="email"
-                            placeholder="name@example.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)} />
-                    </FloatingLabel>
+	return (
+		<div className="LoginForm">
+			{/*<div className="login-image"></div>*/}
+			<div className="login-title">
+				<h1>Login</h1>
+			</div>
 
-                    <FloatingLabel controlId="floatingPassword" label="Password">
-                        <Form.Control
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)} />
-                    </FloatingLabel>
+			<Form className="form-container">
+				<Form.Group>
 
-                </Form.Group>
-                <Button block="true" type="submit" disabled={!validateForm()}>
-                    Login
-                </Button>
-                <Link to="/">Forgot Password?</Link>
-                <hr />
-                <Button block="true" type="submit" className="btn-sing-up">
-                    Sign Up
-                </Button>
-            </Form>
-        </div>
-    );
+					<FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
+						<Form.Control
+							type="email"
+							name="email"
+							value={email}
+							// onChange={(e) => setEmail(e.target.value)} />
+							onChange={handleEmailChange} />
+					</FloatingLabel>
+
+					<FloatingLabel controlId="floatingPassword" label="Password">
+						<Form.Control
+							type="password"
+							name="password"
+							value={password}
+							// onChange={(e) => setPassword(e.target.value)} />
+							onChange={handlePasswordChange} />
+					</FloatingLabel>
+
+				</Form.Group>
+				<Button block="true" type="submit" onClick={handleLogin} >
+					Login
+				</Button>
+				<Link to="/">Forgot Password?</Link>
+				<hr />
+				<Link to="/register">
+					<Button block="true" type="submit" className="btn-sign-up">
+						Register
+					</Button>
+				</Link>
+			</Form>
+		</div>
+	);
 }
 
 export default LoginForm
