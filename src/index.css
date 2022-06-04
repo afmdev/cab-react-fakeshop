@@ -339,6 +339,108 @@ margin-bottom: 10px;
 
 
 
+.messages {
+	width: 100%;
+	height: calc(100vh - 165px);
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	font: 16px/1.3 sans-serif;
+	overflow: auto;
+	padding: 0;
+	background: linear-gradient(rgb(255, 143, 178) 0%, rgb(167, 151, 255) 50%, rgb(0, 229, 255) 100%);
+}
+
+.messages:after {
+	content: '';
+	background: white;
+	flex: 1;
+	pointer-events: none;
+}
+
+.messages li {
+	list-style-type: none;
+	display: flex;
+	flex-direction: row-reverse;
+	overflow: hidden;
+	border-style: solid;
+	border-color: white;
+	border-width: 2px 16px 2px 8px;
+	flex: 0 0 auto;
+}
+
+.messages li.mine {
+	flex-direction: row;
+	border-right-width: 8px;
+	border-left-width: 16px;
+}
+
+.messages .chat-icon {
+	width: 30px;
+		height: 30px;
+		margin: 0 4px;
+}
+
+/* .messages li span.author {
+	display: flex;
+	justify-content: flex-start;
+	font-size: 10px;
+} */
+
+.messages li.mine span.date, .messages li.mine span.author, .messages li span.author {
+	display: flex;
+	font-size: 10px;
+	text-align: right;
+	justify-content: flex-end;
+}
+
+.messages li:first-child {
+	border-top-width: 10px;
+}
+
+.messages li:last-child {
+	border-bottom-width: 10px;
+}
+
+.messages li:before {
+	content: '';
+	flex: 1;
+	background: white;
+	pointer-events: none;
+}
+
+.messages li p {
+	background: #eee;
+	padding: 8px;
+	position: relative;
+	margin-bottom: 0;
+	min-width: 200px;
+}
+
+.messages li p:before {
+	content: '';
+	position: absolute;
+	left: -8px;
+	top: -8px;
+	bottom: -8px;
+	right: -8px;
+	border: 8px solid white;
+	border-radius: 16px;
+	pointer-events: none;
+}
+
+.messages li.mine p {
+	background: none;
+	color: white;
+}
+
+.messages span.text {
+	display: flex;
+	align-items: center;
+}
+
+
+
 .loader {
   margin: 100px auto;
   font-size: 25px;
