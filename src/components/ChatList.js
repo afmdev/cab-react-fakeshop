@@ -55,11 +55,10 @@ function ChatList() {
 				messages.map((message, index) => {
 					return (
 						<li className={message.author === user.email ? "mine" : ""} key={index}>
-							<p>
-
-								<span className="text"><PersonCircle size={20} className="chat-icon" />{message.text}</span>{' '}
-								<span className="author">{message.author}<br />{messageDate(message.date.seconds)}</span>
-							</p>
+							<div className="message">
+								<div className="text"><span><PersonCircle size={20} className="chat-icon" />{message.text}</span></div>
+								<div className="author"><span>{message.author}{' | '}{messageDate(message.date.seconds)}</span></div>
+							</div>
 						</li>
 					);
 				})}

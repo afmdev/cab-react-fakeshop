@@ -54,7 +54,7 @@ function LoginForm() {
 					</FloatingLabel>
 
 				</Form.Group>
-				<Button block="true" type="submit" onClick={handleLogin} >
+				<Button block="true" variant="danger" type="submit" onClick={handleLogin} >
 					Login
 				</Button>
 				<Link to="/">Forgot Password?</Link>

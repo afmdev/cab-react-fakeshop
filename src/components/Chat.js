@@ -1,8 +1,10 @@
 import { addDoc, collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react'
+import { Button, FormControl, InputGroup } from 'react-bootstrap';
 import { db } from '../config'
 import { AuthContext } from '../context/authContext';
 import ChatList from './ChatList';
+
 
 function Chat() {
 	// console.log("db", db)
@@ -10,7 +12,8 @@ function Chat() {
 	const [messages, setMessages] = useState(null)
 	const [chatMsg, setChatMsg] = useState("")
 	const { user } = useContext(AuthContext)
-	console.log("hola q ase", user)
+
+	// console.log("hola q ase", user)
 
 	const getMessages = () => {
 		const q = query(collection(db, "Chat"), orderBy("date", "asc"));
@@ -47,6 +50,7 @@ function Chat() {
 
 	useEffect(() => {
 		getMessages()
+		window.scrollTo(0, 0)
 	}, [])
 
 	const handleMessageChange = (e) => {
@@ -55,6 +59,7 @@ function Chat() {
 	}
 
 	const handleChatMessageSubmit = async () => {
+		setChatMsg("")
 		const messageObj = {
 			text: chatMsg,
 			author: user.email,
@@ -70,12 +75,23 @@ function Chat() {
 
 	return (
 		<div>
-			<h1>Chat</h1>
+			<h1 className="fs-1 fw-bold pt-4 text-center">Chat</h1>
+			<p className="text-center">Write a message</p>
 			<ol className="messages">
 				<ChatList />
 			</ol>
-			<input type="text" value={chatMsg} onChange={handleMessageChange} />
-			<button onClick={handleChatMessageSubmit}>Send</button>
+
+			<InputGroup className="p-3">
+				<FormControl
+					placeholder="Enter your message..."
+					aria-label="Enter your message..."
+					aria-describedby="basic-addon1"
+					value={chatMsg}
+					onChange={handleMessageChange}
+					onKeyDown={(e) => e.key === 'Enter' && handleChatMessageSubmit()}
+				/>
+				<Button variant="danger" onClick={handleChatMessageSubmit}>Send</Button>
+			</InputGroup>
 		</div>
 	);
 }
