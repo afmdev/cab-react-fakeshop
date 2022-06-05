@@ -55,7 +55,7 @@ function RegisterForm() {
 
 				</Form.Group>
 
-				<Button block="true" type="submit" onClick={handleRegister}>
+				<Button block="true" variant="danger" type="submit" onClick={handleRegister}>
 					Register
 				</Button>
 

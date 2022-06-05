@@ -307,13 +307,6 @@ border-color: #8f8f8f;
 margin-bottom: 10px;
 }
 
-.LoginForm button:hover, .RegisterForm button:hover, .MyAccount button:hover {
-width: 100%;
-background-color: #000000;
-border-color: #000000;
-margin-bottom: 10px;
-}
-
 .navbar-light .navbar-fakeshop {
   color: rgba(0,0,0,.55);
   border-color: rgba(0,0,0,.1);
@@ -341,14 +334,14 @@ margin-bottom: 10px;
 
 .messages {
 	width: 100%;
-	height: calc(100vh - 165px);
+	height: calc(100vh - 226px);
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
 	font: 16px/1.3 sans-serif;
 	overflow: auto;
 	padding: 0;
-	background: linear-gradient(rgb(255, 143, 178) 0%, rgb(167, 151, 255) 50%, rgb(0, 229, 255) 100%);
+	background: linear-gradient(#fe1251 0%, rgb(167, 151, 255) 50%, rgb(0, 229, 255) 100%);
 }
 
 .messages:after {
@@ -365,7 +358,7 @@ margin-bottom: 10px;
 	overflow: hidden;
 	border-style: solid;
 	border-color: white;
-	border-width: 2px 16px 2px 8px;
+	border-width: 8px 16px 2px 8px;
 	flex: 0 0 auto;
 }
 
@@ -376,9 +369,9 @@ margin-bottom: 10px;
 }
 
 .messages .chat-icon {
-	width: 30px;
-		height: 30px;
-		margin: 0 4px;
+	width: 22px;
+	height: 22px;
+	margin: 0px 9px 5px 0px;
 }
 
 /* .messages li span.author {
@@ -387,11 +380,15 @@ margin-bottom: 10px;
 	font-size: 10px;
 } */
 
-.messages li.mine span.date, .messages li.mine span.author, .messages li span.author {
-	display: flex;
+.messages li.mine .date, .messages li.mine .author, .messages li .author {
 	font-size: 10px;
 	text-align: right;
 	justify-content: flex-end;
+}
+
+.messages li .text {
+	word-break: break-all;
+	overflow-wrap: break-word;
 }
 
 .messages li:first-child {
@@ -409,15 +406,19 @@ margin-bottom: 10px;
 	pointer-events: none;
 }
 
-.messages li p {
+.messages li .message {
 	background: #eee;
-	padding: 8px;
+	padding: 14px;
 	position: relative;
 	margin-bottom: 0;
-	min-width: 200px;
+	min-width: 268px;
+	animation-name: message-effect;
+	animation-duration: .5s;
+	animation-fill-mode: forwards;
+	transform: translateY(5px);
 }
 
-.messages li p:before {
+.messages li .message:before {
 	content: '';
 	position: absolute;
 	left: -8px;
@@ -425,19 +426,26 @@ margin-bottom: 10px;
 	bottom: -8px;
 	right: -8px;
 	border: 8px solid white;
-	border-radius: 16px;
+	border-radius: 25px;
 	pointer-events: none;
 }
 
-.messages li.mine p {
+.messages li.mine .message {
 	background: none;
 	color: white;
 }
 
-.messages span.text {
-	display: flex;
-	align-items: center;
+
+
+@keyframes message-effect {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
+
+
+
 
 
 
