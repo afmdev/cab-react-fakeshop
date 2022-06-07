@@ -1,8 +1,10 @@
 import { createContext, useEffect, useState } from 'react'
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, deleteUser, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { auth } from '../config';
 import { db } from '../config';
 import { useNavigate } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
+import OpenModal from '../components/OpenModal';
 
 
 export const AuthContext = createContext()
@@ -29,7 +31,29 @@ export const AuthContextProvider = (props) => {
 			const errorCode = error.code
 			const errorMessage = error.message
 		}
-		console.log("email password", email, password)
+	}
+
+
+	const userUpdate = (name) => {
+		updateProfile(user, {
+			displayName: `${name}`, photoURL: "https://www.heisenberg.shop/media/logo/websites/4/logo-heisenberg.png"
+		}).then(() => {
+			<OpenModal />
+		}).catch((error) => {
+			const errorCode = error.code
+			const errorMessage = error.message
+		});
+
+	}
+
+	const removeUser = (user) => {
+		deleteUser(user).then(() => {
+			alert("borra o no borra?")
+			// User deleted.
+		}).catch((error) => {
+			const errorCode = error.code
+			const errorMessage = error.message
+		});
 	}
 
 	const login = (email, password) => {
@@ -74,8 +98,7 @@ export const AuthContextProvider = (props) => {
 
 
 
-	return <AuthContext.Provider value={{ user, setUser, register, login, logout }}>
+	return <AuthContext.Provider value={{ user, setUser, register, login, logout, userUpdate, removeUser }}>
 		{props.children}
 	</AuthContext.Provider>
 }
-
