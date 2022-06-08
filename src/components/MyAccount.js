@@ -27,7 +27,7 @@ function MyAccount() {
 
 	const handleRemove = (e) => {
 		e.preventDefault()
-		removeUser(name.)
+		removeUser(name)
 		console.log("noborra")
 	}
 
