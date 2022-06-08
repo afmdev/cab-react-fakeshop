@@ -293,7 +293,7 @@ margin-bottom: 20px;
 display: block;
 }
 
-.LoginForm button, .RegisterForm button, .MyAccount button {
+.LoginForm button, .RegisterForm button, .MyAccount button.btn-danger {
 width: 100%;
 background-color: #fe1251;
 border-color: #fe1251;
