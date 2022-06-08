@@ -293,10 +293,17 @@ margin-bottom: 20px;
 display: block;
 }
 
-.LoginForm button, .RegisterForm button, .MyAccount button {
+.LoginForm button, .RegisterForm button, .MyAccount  button {
 width: 100%;
 background-color: #fe1251;
 border-color: #fe1251;
+margin-bottom: 10px;
+}
+
+.MyAccount button.btn-link  {
+width: 100%;
+background-color: #fff;
+border-color: #f8f9fa;
 margin-bottom: 10px;
 }
 
@@ -305,6 +312,11 @@ width: 100%;
 background-color: #8f8f8f;
 border-color: #8f8f8f;
 margin-bottom: 10px;
+}
+
+.LoginForm .btn-sign-up:hover, .RegisterForm .btn-sign-up:hover, .MyAccount .btn-sign-up:hover {
+background-color: #000;
+border-color: #000;
 }
 
 .navbar-light .navbar-fakeshop {
@@ -334,7 +346,7 @@ margin-bottom: 10px;
 
 .messages {
 	width: 100%;
-	height: calc(100vh - 226px);
+	height: calc(100vh - 260px);
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;

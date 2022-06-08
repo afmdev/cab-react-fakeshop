@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Navbar, Nav, Offcanvas, Button } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap'
 import { AuthContext } from "../context/authContext";
@@ -9,21 +9,13 @@ import OpenModal from './OpenModal'
 
 function Menu() {
 
-	const { user, setUser, logout } = useContext(AuthContext)
+	const { user, setUser, logout, userUpdate } = useContext(AuthContext)
 
-	// const login = () => {
-	// 	setUser({ userName: "Alex" })
-	// 	console.log(user)
-	// }
-	// const logout = () => {
-	// 	setUser(null)
-	// 	console.log(user)
-	// }
-	// onClick = { logout }
 
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
+
 
 	return (
 
@@ -52,7 +44,16 @@ function Menu() {
 					<Nav>
 						<div>
 							{user
-								? (<div className="d-flex align-items-center username"><Link to="/my-account" className="text-decoration-none text-reset"><PersonCircle size={20} className="m-1" />{' '}<span className="pe-2 fs-6 font-monospace">{user.email} </span></Link>{'|'}<OpenModal /></div>)
+								? (<div className="d-flex align-items-center username"><Link to="/my-account" className="text-decoration-none text-reset">
+
+									{user.photoURL === null ? <PersonCircle size={25} className="m-1" /> : <img src={user.photoURL} alt={user.email} width="25px" heigth="25px" />}
+
+									{' '}<span className="pe-2 fs-6 font-monospace">
+
+										{user.displayName === null ? `${user.email}` : `${user.displayName}`}
+
+
+									</span></Link>{'|'}<OpenModal /></div>)
 								: (<div><Link to="/login"><Button variant="danger" size="sm">login</Button></Link>{' '}<Link to="/register"><Button variant="dark" size="sm">register</Button></Link></div>)
 							}
 							{/* {user

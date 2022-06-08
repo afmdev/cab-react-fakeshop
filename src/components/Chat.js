@@ -50,7 +50,6 @@ function Chat() {
 
 	useEffect(() => {
 		getMessages()
-		window.scrollTo(0, 0)
 	}, [])
 
 	const handleMessageChange = (e) => {
@@ -75,7 +74,7 @@ function Chat() {
 
 	return (
 		<div>
-			<h1 className="fs-1 fw-bold pt-4 text-center">Chat</h1>
+			<h1 className="fs-1 fw-bold pt-5 text-center">Chat</h1>
 			<p className="text-center">Write a message</p>
 			<ol className="messages">
 				<ChatList />
