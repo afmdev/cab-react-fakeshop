@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Form, Button, FloatingLabel } from 'react-bootstrap';
 import { PersonCircle } from 'react-bootstrap-icons';
 import { AuthContext } from '../context/authContext';
+import EditAccount from './EditAccount';
 
 function MyAccount() {
 
@@ -27,7 +28,7 @@ function MyAccount() {
 
 	const handleRemove = (e) => {
 		e.preventDefault()
-		removeUser(name.)
+		removeUser(name)
 		console.log("noborra")
 	}
 
@@ -44,31 +45,9 @@ function MyAccount() {
 			</div>
 			<div className="fs-1 fw-bold mb-3 ">{user.displayName === null ? `${user.email}` : displayName}<br /><span className="fs-5">{user.email}</span></div>
 			<p className="fs-10 text-center">Account created:<br />{user.metadata.creationTime}</p>
-			<div><Button variant="danger">Edit Account</Button>{' '}
+			<div><EditAccount />{' '}
 				<Button variant="link" onClick={handleRemove}>Delete Account</Button></div>
-			<div className="login-title">
-				<h1>Edit  Account</h1>
-			</div>
 
-			<Form className="form-container">
-				<Form.Group>
-
-					<FloatingLabel controlId="floatingName" label="Name" className="mb-3">
-						<Form.Control
-							type="text"
-							name="name"
-							placeholder="Name"
-							value={name}
-							// onChange={(e) => setEmail(e.target.value)} />
-							onChange={handleNameChange} />
-					</FloatingLabel>
-
-
-				</Form.Group>
-				<Button block="true" variant="danger" type="submit" onClick={handleUpdate} >
-					Save Changes
-				</Button>
-			</Form>
 		</div>
 	);
 }
