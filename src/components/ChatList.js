@@ -7,8 +7,10 @@ import { AuthContext } from '../context/authContext';
 function ChatList() {
 	// console.log("db", db)
 
-	const [messages, setMessages] = useState(null)
 	const { user } = useContext(AuthContext)
+	const [messages, setMessages] = useState(null)
+	const [displayName, setDisplayName] = useState(user.displayName)
+	const [photoURL, setPhotoURL] = useState(user.photoURL)
 
 	const getMessages = () => {
 		const q = query(collection(db, "Chat"), orderBy("date", "asc"));
@@ -20,6 +22,7 @@ function ChatList() {
 			});
 			setMessages(myMessages)
 		});
+
 	}
 
 	//#region 
@@ -43,6 +46,7 @@ function ChatList() {
 
 	useEffect(() => {
 		getMessages()
+		window.scrollTo(0, document.body.scrollHeight)
 	}, [])
 
 	const messageDate = (time) => {
@@ -56,8 +60,17 @@ function ChatList() {
 					return (
 						<li className={message.author === user.email ? "mine" : ""} key={index}>
 							<div className="message">
-								<div className="text"><span><PersonCircle size={20} className="chat-icon" />{message.text}</span></div>
+								<div className="text"><span>
+
+									{message.author === user.email ? <img src={photoURL} className="chat-icon" alt={user.email} width="20px" heigth="20px" /> : <PersonCircle size={20} className="chat-icon" />}
+
+									{/* <PersonCircle size={20} className="chat-icon" /> */}
+
+									{/* {photoURL === null ? <PersonCircle size={20} className="chat-icon m-1" /> : <img src={photoURL} className="chat-icon" alt={user.email} width="20px" heigth="20px" />} */}
+
+									{message.text}</span></div>
 								<div className="author"><span>{message.author}{' | '}{messageDate(message.date.seconds)}</span></div>
+
 							</div>
 						</li>
 					);

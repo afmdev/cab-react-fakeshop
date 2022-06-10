@@ -27,8 +27,9 @@ function RegisterForm() {
 	return (
 		<div className="RegisterForm">
 			{/*<div className="login-image"></div>*/}
+			{/* <h1 className="mb-5">Register an Account</h1> */}
 			<div className="login-title">
-				<h1>Register</h1>
+				<h2>Register</h2>
 			</div>
 			<Form className="form-container">
 				<Form.Group>
@@ -55,7 +56,7 @@ function RegisterForm() {
 
 				</Form.Group>
 
-				<Button block="true" variant="danger" type="submit" onClick={handleRegister}>
+				<Button block="true" variant="danger" type="submit" onClick={handleRegister} className="mb-2">
 					Register
 				</Button>
 

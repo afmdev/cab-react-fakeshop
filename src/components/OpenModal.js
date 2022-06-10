@@ -20,8 +20,8 @@ function MyVerticallyCenteredModal(props) {
 				<p>
 					Do you really want to log out or did you click on the icon by accident?
 				</p>
-				<Button onClick={props.onHide}>ACCIDENT!</Button>{' '}
-				<Button onClick={logout}>LOGOUT!</Button>
+				<Button variant="danger" onClick={logout}>LOGOUT</Button>{' '}
+				<Button variant="dark" onClick={props.onHide}>NO LOGOUT</Button>
 			</Modal.Body>
 		</Modal>
 	);

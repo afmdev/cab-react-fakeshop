@@ -23,12 +23,16 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
   outline: 0 none;
 }
 
+
+
 button.card-button.read-more {
   background-color: #fe1251;
   border-color: #fe1251;
 }
 
-button.card-button.read-more:hover {
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle, button.card-button.read-more:hover {
   background-color: #bb103e;
   border-color: #bb103e;
 }
@@ -257,7 +261,7 @@ text-align: center;
   background: #f1f1f1;
 }
 
-.LoginForm h1, .RegisterForm h1, .MyAccount h1 {
+.LoginForm h2, .RegisterForm h2, .MyAccount h2 {
   color: #fff;
   font-weight: 300;
   text-transform: uppercase;
@@ -271,7 +275,7 @@ text-align: center;
   border-radius: 100px;
   margin: 0 auto;
   margin-bottom: -50px;
-  padding-top: 5px;
+  padding-top: 3px;
 }
 
 .LoginForm .login-image, .RegisterForm .login-image, .MyAccount .login-image {
@@ -293,11 +297,10 @@ margin-bottom: 20px;
 display: block;
 }
 
-.LoginForm button, .RegisterForm button, .MyAccount  button {
+.LoginForm button, .RegisterForm button, .MyAccount button {
 width: 100%;
 background-color: #fe1251;
 border-color: #fe1251;
-margin-bottom: 10px;
 }
 
 .MyAccount button.btn-link  {
@@ -346,7 +349,7 @@ border-color: #000;
 
 .messages {
 	width: 100%;
-	height: calc(100vh - 260px);
+	/* height: calc(100vh - 260px); */
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
@@ -370,7 +373,7 @@ border-color: #000;
 	overflow: hidden;
 	border-style: solid;
 	border-color: white;
-	border-width: 8px 16px 2px 8px;
+	border-width: 8px 16px 0px 8px;
 	flex: 0 0 auto;
 }
 
@@ -399,7 +402,6 @@ border-color: #000;
 }
 
 .messages li .text {
-	word-break: break-all;
 	overflow-wrap: break-word;
 }
 
@@ -453,6 +455,50 @@ border-color: #000;
 	to {
 		opacity: 1;
 		transform: translateY(0);
+	}
+}
+
+
+
+.offcanvas-body .nav-link:first-child {
+	border-top: 1px dotted#fe1251;
+}
+
+.offcanvas-body .nav-link {
+	color: #fe1251;
+	border-bottom: 1px dotted#fe1251;
+}
+
+.offcanvas-body .nav-link:focus,
+.offcanvas-body .nav-link:hover,
+.offcanvas-body a.active.nav-link {
+	color: #000000;
+	background: #a5a5a51c;
+
+}
+
+
+
+
+.offcanvas-body .menu-icons {
+	height: 16px;
+	margin-top:-4px
+}
+
+
+.offcanvas-body a:hover .menu-icons {
+	-webkit-animation: infinite-spinning 1s ease-out 0s infinite normal;
+	animation: infinite-spinning 1s ease-out 0s infinite normal;
+	animation-iteration-count: 1
+}
+
+@keyframes infinite-spinning {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
 	}
 }
 

@@ -5,33 +5,41 @@ import { AuthContext } from '../context/authContext';
 
 function MyAccount() {
 
-	const { user, userUpdate, removeUser } = useContext(AuthContext)
+	const { user, userUpdate, deleteYourUser } = useContext(AuthContext)
 	const [name, setName] = useState("")
 	const [displayName, setDisplayName] = useState(user.displayName)
 	const [photoURL, setPhotoURL] = useState(user.photoURL)
 
-
-
+	console.log("user", user)
 
 	const handleNameChange = (e) => {
 		setName(e.target.value)
+
 	}
 
+	const handleImageChange = (e) => {
+		setPhotoURL(e.target.value)
+	}
 
 	const handleUpdate = (e) => {
 		e.preventDefault()
-		userUpdate(name)
-		setDisplayName(user.displayName)
-		setPhotoURL(user.photoURL)
+		if (name.trim().length == 0) {
+			userUpdate(user.displayName, photoURL)
+		} else {
+			setDisplayName(name)
+			userUpdate(name, photoURL)
+		}
+
 	}
 
 	const handleRemove = (e) => {
-		e.preventDefault()
-		removeUser(name)
-		console.log("noborra")
+		deleteYourUser()
 	}
 
 
+	const messageDate = (time) => {
+		return new Date(time * 1000).toLocaleDateString()
+	}
 
 
 	return (
@@ -43,11 +51,12 @@ function MyAccount() {
 
 			</div>
 			<div className="fs-1 fw-bold mb-3 ">{user.displayName === null ? `${user.email}` : displayName}<br /><span className="fs-5">{user.email}</span></div>
-			<p className="fs-10 text-center">Account created:<br />{user.metadata.creationTime}</p>
-			<div><Button variant="danger">Edit Account</Button>{' '}
-				<Button variant="link" onClick={handleRemove}>Delete Account</Button></div>
+			<p className="fs-10 text-center">Account created:<br />
+				{messageDate(user.metadata.createdAt)}</p>
+			<div><Button variant="danger" className="mb-1">Edit Account</Button>{' '}
+				<Button variant="link" className="mb-5" onClick={handleRemove}>Delete Account</Button></div>
 			<div className="login-title">
-				<h1>Edit  Account</h1>
+				<h2>Edit  Account</h2>
 			</div>
 
 			<Form className="form-container">
@@ -62,6 +71,14 @@ function MyAccount() {
 							// onChange={(e) => setEmail(e.target.value)} />
 							onChange={handleNameChange} />
 					</FloatingLabel>
+
+					<Form.Select className="mb-3" onChange={handleImageChange}>
+						<option>Select profile image</option>
+						<option value="https://www.alejandrofm.com/cab/profiles/profile001.svg">Image 1</option>
+						<option value="https://www.alejandrofm.com/cab/profiles/profile002.svg">Image 2</option>
+						<option value="https://www.alejandrofm.com/cab/profiles/profile003.svg">Image 3</option>
+						<option value="https://www.alejandrofm.com/cab/profiles/profile004.svg">Image 4</option>
+					</Form.Select>
 
 
 				</Form.Group>

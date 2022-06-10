@@ -1,9 +1,7 @@
 import { createContext, useEffect, useState } from 'react'
 import { createUserWithEmailAndPassword, deleteUser, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import { auth } from '../config';
-import { db } from '../config';
 import { useNavigate } from 'react-router-dom';
-import { Modal } from 'react-bootstrap';
 import OpenModal from '../components/OpenModal';
 
 
@@ -11,7 +9,10 @@ export const AuthContext = createContext()
 
 export const AuthContextProvider = (props) => {
 	const [user, setUser] = useState(null)
+	console.log('user authcontext', user)
 	const redirectTo = useNavigate();
+	const [updatedUserName, setUpdatedUserName] = useState("")
+	const [updatedUserProfileImage, setUpdatedUserProfileImage] = useState("")
 
 	const register = async (email, password) => {
 		try {
@@ -31,29 +32,6 @@ export const AuthContextProvider = (props) => {
 			const errorCode = error.code
 			const errorMessage = error.message
 		}
-	}
-
-
-	const userUpdate = (name) => {
-		updateProfile(user, {
-			displayName: `${name}`, photoURL: "https://www.heisenberg.shop/media/logo/websites/4/logo-heisenberg.png"
-		}).then(() => {
-			<OpenModal />
-		}).catch((error) => {
-			const errorCode = error.code
-			const errorMessage = error.message
-		});
-
-	}
-
-	const removeUser = (user) => {
-		deleteUser(user).then(() => {
-			alert("borra o no borra?")
-			// User deleted.
-		}).catch((error) => {
-			const errorCode = error.code
-			const errorMessage = error.message
-		});
 	}
 
 	const login = (email, password) => {
@@ -83,10 +61,6 @@ export const AuthContextProvider = (props) => {
 		});
 	}
 
-	useEffect(() => {
-		checkIfUserIsLogged()
-	}, [])
-
 	const logout = () => {
 		signOut(auth).then(() => {
 			setUser(null)
@@ -97,8 +71,53 @@ export const AuthContextProvider = (props) => {
 
 
 
+	const userUpdate = (name, image) => {
+		console.log('user updateFunction', user)
+		updateProfile(user, {
+			displayName: `${name}`, photoURL: `${image}`
 
-	return <AuthContext.Provider value={{ user, setUser, register, login, logout, userUpdate, removeUser }}>
+		}).then(() => {
+			setUpdatedUserName(name)
+			setUpdatedUserProfileImage(image)
+		}).catch((error) => {
+			const errorCode = error.code
+			const errorMessage = error.message
+		});
+
+	}
+
+	// const deleteYourUser = () => {
+	// 	console.log("User deleted first clg???")
+	// 	user.delete().then(() => {
+	// 		console.log("User deleted???")
+	// 	}).catch((error) => {
+	// 		const errorCode = error.code
+	// 		const errorMessage = error.message
+	// 	});
+	// }
+
+
+	const deleteYourUser = async () => {
+		try {
+			const borratePohFavoh = await user.delete()
+		}
+		catch (error) {
+			setUser(null)
+			const errorCode = error.code
+			const errorMessage = error.message
+		}
+	}
+
+
+
+
+
+	useEffect(() => {
+		checkIfUserIsLogged()
+	}, [])
+
+
+	return <AuthContext.Provider value={{ user, setUser, register, login, logout, userUpdate, updatedUserName, updatedUserProfileImage, deleteYourUser }}>
 		{props.children}
 	</AuthContext.Provider>
 }
