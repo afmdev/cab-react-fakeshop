@@ -2,15 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import { Navbar, Nav, Offcanvas, Button } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap'
 import { AuthContext } from "../context/authContext";
-import { BoxArrowRight, PersonCircle } from 'react-bootstrap-icons';
+import { Bug, ChatText, House, Person, PersonCircle, Shop } from 'react-bootstrap-icons';
 import { Link } from "react-router-dom";
 import OpenModal from './OpenModal'
 
 
 function Menu() {
 
-	const { user, setUser, logout, userUpdate } = useContext(AuthContext)
-
+	const { user, setUser, logout, userUpdate, updatedUser } = useContext(AuthContext)
+	console.log('user menu', user)
+	console.log('updated menu', updatedUser)
 
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
@@ -69,12 +70,12 @@ function Menu() {
 					<Offcanvas.Title>Menu</Offcanvas.Title>
 				</Offcanvas.Header>
 				<Offcanvas.Body>
-					<LinkContainer to="/"><Nav.Link onClick={handleClose}>Home</Nav.Link></LinkContainer>
-					<LinkContainer to="/shop"><Nav.Link onClick={handleClose}>Shop</Nav.Link></LinkContainer>
-					<LinkContainer to="/chat"><Nav.Link onClick={handleClose}>Chat</Nav.Link></LinkContainer>
-					<LinkContainer to="/contact"><Nav.Link onClick={handleClose}>Contact</Nav.Link></LinkContainer>
-					<LinkContainer to="/login"><Nav.Link onClick={handleClose}>Login</Nav.Link></LinkContainer>
-					<LinkContainer to="/register"><Nav.Link onClick={handleClose}>Register</Nav.Link></LinkContainer>
+					<LinkContainer to="/"><Nav.Link onClick={handleClose}><House size={25} className="menu-icons" />Home</Nav.Link></LinkContainer>
+					<LinkContainer to="/shop"><Nav.Link onClick={handleClose}><Shop size={25} className="menu-icons" />Shop</Nav.Link></LinkContainer>
+					<LinkContainer to="/chat"><Nav.Link onClick={handleClose}><ChatText size={25} className="menu-icons" />Chat</Nav.Link></LinkContainer>
+					<LinkContainer to="/url-does-not-exist"><Nav.Link onClick={handleClose}><Bug size={25} className="menu-icons" />No Exist Link</Nav.Link></LinkContainer>
+					<LinkContainer to="/my-account"><Nav.Link onClick={handleClose}><Person size={25} className="menu-icons" />My Account</Nav.Link></LinkContainer>
+
 				</Offcanvas.Body>
 			</Offcanvas>
 		</Navbar>

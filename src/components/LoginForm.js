@@ -26,8 +26,9 @@ function LoginForm() {
 	return (
 		<div className="LoginForm">
 			{/*<div className="login-image"></div>*/}
+			{/* <h1 className="mb-5">Log in your Account</h1> */}
 			<div className="login-title">
-				<h1>Login</h1>
+				<h2>Login</h2>
 			</div>
 
 			<Form className="form-container">
@@ -54,11 +55,12 @@ function LoginForm() {
 					</FloatingLabel>
 
 				</Form.Group>
-				<Button block="true" variant="danger" type="submit" onClick={handleLogin} >
+				<Button block="true" variant="danger" type="submit" onClick={handleLogin} className="mb-2">
 					Login
 				</Button>
-				<Link to="/">Forgot Password?</Link>
+				{/* <Link to="/">Forgot Password?</Link> */}
 				<hr />
+				<p>Do you want sign up?</p>
 				<Link to="/register">
 					<Button block="true" type="submit" className="btn-sign-up">
 						Register
