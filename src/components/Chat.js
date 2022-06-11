@@ -1,6 +1,7 @@
 import { addDoc, collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import React, { useContext, useEffect, useState } from 'react'
 import { Button, FormControl, InputGroup } from 'react-bootstrap';
+import { Windows } from 'react-bootstrap-icons';
 import { db } from '../config'
 import { AuthContext } from '../context/authContext';
 import ChatList from './ChatList';
@@ -22,9 +23,9 @@ function Chat() {
 			const myMessages = [];
 			querySnapshot.forEach((doc) => {
 				myMessages.push(doc.data());
-				console.log("MyMessages", myMessages)
+				// console.log("MyMessages", myMessages)
 			});
-			console.log(myMessages);
+			// console.log(myMessages);
 			setMessages(myMessages)
 		});
 	}
@@ -55,6 +56,7 @@ function Chat() {
 	const handleMessageChange = (e) => {
 		console.log(e.target.value)
 		setChatMsg(e.target.value)
+
 	}
 
 	const handleChatMessageSubmit = async () => {
@@ -67,9 +69,11 @@ function Chat() {
 		try {
 			const docRef = await addDoc(collection(db, "Chat"), messageObj);
 			console.log("Document written with ID: ", docRef.id);
+
 		} catch (e) {
 			console.error("Error adding document: ", e);
 		}
+		window.scrollTo(0, document.body.scrollHeight)
 	}
 
 	return (
