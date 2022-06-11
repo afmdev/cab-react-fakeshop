@@ -6,7 +6,7 @@ import { AuthContext } from '../context/authContext';
 function EditMyAccount() {
 
 	const { updateUserProfile } = useContext(AuthContext)
-	const [displayName, displayName] = useState("")
+	const [displayName, setdisplayName] = useState("")
 	const [password, setPassword] = useState("")
 
 	const handleEmailChange = (e) => {
@@ -28,7 +28,7 @@ function EditMyAccount() {
 		<div className="RegisterForm">
 			{/*<div className="login-image"></div>*/}
 			<div className="login-title">
-				<h1>Edit Account</h1>
+				<h2>Edit Account</h2>
 			</div>
 			<Form className="form-container">
 				<Form.Group>
