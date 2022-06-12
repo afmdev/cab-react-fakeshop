@@ -5,6 +5,7 @@ import { Button, FormControl, InputGroup } from 'react-bootstrap';
 import { Windows } from 'react-bootstrap-icons';
 import { db } from '../config'
 import { AuthContext } from '../context/authContext';
+import { ProductsContext } from '../context/productsContext';
 
 
 
@@ -15,6 +16,7 @@ function Cart() {
 	const [messages, setMessages] = useState(null)
 	const [chatMsg, setChatMsg] = useState("")
 	const { user } = useContext(AuthContext)
+	const { products } = useContext(ProductsContext)
 
 	// console.log("hola q ase", user)
 
@@ -51,14 +53,15 @@ function Cart() {
 			date: new Date() //crea la fecha actual
 		}
 		try {
-			const docRef = await addDoc(collection(db, "Chat"), messageObj);
+			const docRef = await addDoc(collection(db, "Cartshop"), messageObj);
 			console.log("Document written with ID: ", docRef.id);
 
 		} catch (e) {
 			console.error("Error adding document: ", e);
 		}
-		window.scrollTo(0, document.body.scrollHeight)
 	}
+
+	console.log('Products: ', products)
 
 	return (
 		<div>
