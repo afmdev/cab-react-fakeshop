@@ -65,7 +65,7 @@ function Menu() {
 					</Nav>
 				</Navbar>
 			</div>
-			<Offcanvas show={show} onHide={handleClose}>
+			<Offcanvas show={show} onHide={handleClose} >
 				<Offcanvas.Header closeButton>
 					<Offcanvas.Title>Menu</Offcanvas.Title>
 				</Offcanvas.Header>
@@ -75,7 +75,6 @@ function Menu() {
 					<LinkContainer to="/chat"><Nav.Link onClick={handleClose}><ChatText size={25} className="menu-icons" />Chat</Nav.Link></LinkContainer>
 					<LinkContainer to="/url-does-not-exist"><Nav.Link onClick={handleClose}><Bug size={25} className="menu-icons" />No Exist Link</Nav.Link></LinkContainer>
 					<LinkContainer to="/my-account"><Nav.Link onClick={handleClose}><Person size={25} className="menu-icons" />My Account</Nav.Link></LinkContainer>
-
 				</Offcanvas.Body>
 			</Offcanvas>
 		</Navbar>

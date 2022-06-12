@@ -1,12 +1,18 @@
-import React, { useContext, useEffect } from 'react'
-import { Container, Row, Col, Card, Badge, OverlayTrigger, Button, Tooltip } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from 'react'
+import { Container, Row, Col, Card, Badge, OverlayTrigger, Button, Tooltip, Offcanvas } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CartPlus } from 'react-bootstrap-icons';
 import { ProductsContext } from '../context/productsContext'
+import ViewCart from '../views/ViewCart';
 
 function ProductCards() {
 
 	const { products, loader, error, fetchData, filter } = useContext(ProductsContext)
+
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
 
 	useEffect(() => {
 		fetchData()
@@ -38,14 +44,15 @@ function ProductCards() {
 									<Card.Text className="text-truncate small-text">inkl. MwSt, zzgl. Versand</Card.Text>
 
 									<Container className="d-flex justify-content-between p-0 m-0">
-										<Link to={`../shop/${id}`} className="w-100">
+										<Link to={`../shop/${id}`} className="w-100  me-2">
 											<Button size="sm" className="card-button read-more w-100" >Read More</Button>
 										</Link>
 										<OverlayTrigger
 											placement="top"
 											delay={{ show: 100, hide: 500 }}
 											overlay={renderTooltip}>
-											<Button size="sm" className="card-button add-cart ml-3">
+
+											<Button size="sm" className="card-button add-cart" onClick={handleShow}>
 												<CartPlus size={20} />
 											</Button>
 										</OverlayTrigger>
@@ -57,6 +64,14 @@ function ProductCards() {
 					)) : <p>hola</p>}
 				</Row>
 			</div>
+			{/* <Offcanvas show={show} onHide={handleClose} placement="end">
+				<Offcanvas.Header closeButton>
+					<Offcanvas.Title>Fakeshop Cart</Offcanvas.Title>
+				</Offcanvas.Header>
+				<Offcanvas.Body>
+					<ViewCart />
+				</Offcanvas.Body>
+			</Offcanvas> */}
 		</div>
 	);
 }
