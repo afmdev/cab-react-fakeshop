@@ -9,6 +9,7 @@ import NoMatch from './components/NoMatch'
 import { AuthContextProvider } from './context/authContext';
 import { ProductContextProvider } from './context/productsContext'
 import Menu from './components/Menu';
+import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
 import ViewNoLogged from './views/ViewNoLogged';
 import ViewRegister from './views/ViewRegister';
@@ -32,6 +33,7 @@ function App() {
 						<Route path="no-logged" element={<ViewNoLogged />} />
 						<Route path="*" element={<NoMatch />} />
 					</Routes>
+					<Footer />
 				</ProductContextProvider>
 			</AuthContextProvider>
 		</>
