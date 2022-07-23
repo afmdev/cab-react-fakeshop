@@ -477,9 +477,6 @@ border-color: #000;
 
 }
 
-
-
-
 .offcanvas-body .menu-icons {
 	height: 16px;
 	margin-top:-4px
@@ -492,6 +489,31 @@ border-color: #000;
 	animation-iteration-count: 1
 }
 
+
+.ViewMyAccount, .ViewChat, .ViewShop, .ViewRegister, .ViewLogin, .Contact, .NoMatch, .NoLogged, .ViewSingleProduct {
+	min-height: calc(100vh - 125px);
+}
+
+.footer {
+	font-size: 12px;
+	background: #e5e5e5;
+	display: flex;
+	align-items: center;
+	color: #2c2c2c;
+	flex-direction: column;
+	justify-content: center;
+	padding: 14px 0px 7px 0px;
+}
+
+.footer p {
+	margin-bottom: 4px;
+}
+
+.footer a {
+	color: #8d8d8d;
+	text-decoration: none;
+}
+
 @keyframes infinite-spinning {
 	from {
 		transform: rotate(0deg);
@@ -501,11 +523,6 @@ border-color: #000;
 		transform: rotate(360deg);
 	}
 }
-
-
-
-
-
 
 .loader {
   margin: 100px auto;

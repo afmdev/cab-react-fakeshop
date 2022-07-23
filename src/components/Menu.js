@@ -37,7 +37,7 @@ function Menu() {
 						<LinkContainer to="/"><Nav.Link>Home</Nav.Link></LinkContainer>
 						<LinkContainer to="/shop"><Nav.Link>Shop</Nav.Link></LinkContainer>
 						<LinkContainer to="/chat"><Nav.Link>Chat</Nav.Link></LinkContainer>
-						<LinkContainer to="/contact"><Nav.Link>Contact</Nav.Link></LinkContainer>
+						{/* <LinkContainer to="/contact"><Nav.Link>Contact</Nav.Link></LinkContainer> */}
 					</Nav>
 				</Navbar>
 

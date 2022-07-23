@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "alejandrofm.com",
+  "short_name": "Rick & Morty on React.js",
+  "name": "afm : Fakeshop on React.js",
+  "description": "Alejandro Francisco Marrero :: Code Academy Berlin 2022",
   "icons": [
     {
       "src": "favicon.ico",
