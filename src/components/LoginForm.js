@@ -67,6 +67,7 @@ function LoginForm() {
 					</Button>
 				</Link>
 			</Form>
+			<p className="mt-4 text-secondary"><small>DEMO<br />Email: a@a.com<br />Pass: 123456</small></p>
 		</div>
 	);
 }

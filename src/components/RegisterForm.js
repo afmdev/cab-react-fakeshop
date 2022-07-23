@@ -69,6 +69,7 @@ function RegisterForm() {
 				</Link>
 
 			</Form>
+			<p className="mt-4 text-secondary"><small>Remember use a fake email but with a valid LTD (.com, .net, .org, etc) and the password should be at least 6 characters.</small></p>
 		</div>
 	);
 }

@@ -31,6 +31,7 @@ export const AuthContextProvider = (props) => {
 			setUser(null)
 			const errorCode = error.code
 			const errorMessage = error.message
+			alert(error.message);
 		}
 	}
 
@@ -46,6 +47,7 @@ export const AuthContextProvider = (props) => {
 				setUser(null)
 				const errorCode = error.code
 				const errorMessage = error.message
+				alert(error.message);
 			});
 	}
 
@@ -68,8 +70,6 @@ export const AuthContextProvider = (props) => {
 			console.log(error)
 		});
 	}
-
-
 
 	const userUpdate = (name, image) => {
 		console.log('user updateFunction', user)
@@ -96,7 +96,6 @@ export const AuthContextProvider = (props) => {
 	// 	});
 	// }
 
-
 	const deleteYourUser = async () => {
 		try {
 			const borratePohFavoh = await user.delete()
@@ -108,14 +107,9 @@ export const AuthContextProvider = (props) => {
 		}
 	}
 
-
-
-
-
 	useEffect(() => {
 		checkIfUserIsLogged()
 	}, [])
-
 
 	return <AuthContext.Provider value={{ user, setUser, register, login, logout, userUpdate, updatedUserName, updatedUserProfileImage, deleteYourUser }}>
 		{props.children}
