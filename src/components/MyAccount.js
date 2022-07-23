@@ -53,7 +53,8 @@ function MyAccount() {
 			<div className="fs-1 fw-bold mb-3 ">{user.displayName === null ? `${user.email}` : displayName}<br /><span className="fs-5">{user.email}</span></div>
 			<p className="fs-10 text-center">Account created:<br />
 				{messageDate(user.metadata.creationTime)}</p>
-			<div><Button variant="danger" className="mb-1">Edit Account</Button>{' '}
+			<div>
+				{/* <Button variant="danger" className="mb-1">Edit Account</Button>{' '} */}
 				<Button variant="link" className="mb-5" onClick={handleRemove}>Delete Account</Button></div>
 			<div className="login-title">
 				<h2>Edit  Account</h2>
